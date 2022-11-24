@@ -1,0 +1,8 @@
+db.sqlite3
+venv
+__pycache__
+.idea
+ngrok.exe
+.ipynb_checkpoints
+_media
+mediafiles
