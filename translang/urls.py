@@ -1,5 +1,5 @@
 from django.urls import path
-from detail import views
+from translang import views
 
 urlpatterns = [
     path("", views.home1),
