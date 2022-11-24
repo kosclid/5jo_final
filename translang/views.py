@@ -8,17 +8,18 @@ from django.utils.decorators import method_decorator
 def index(request):
     return render(
         request,
-        "detail/index.html",
+        "translang/index.html",
         {},
     )
 
 
 @method_decorator(csrf_exempt, name="dispatch")
 def test(request):
+    test ='hello'
     return render(
         request,
-        "detail/test.html",
-        {},
+        "translang/test.html",
+        {'test': test},
     )
 
 
@@ -228,6 +229,6 @@ def home(request):
 def home1(request):
     return render(
         request,
-        "detail/home.html",
+        "translang/home.html",
         {},
     )

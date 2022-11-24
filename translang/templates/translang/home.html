@@ -15,6 +15,7 @@
 hello??<br>
 ddd{{ context }}ddd
 
+
 <h1 id="ahha" style="color:black;">ahha</h1>
 
 
@@ -48,7 +49,7 @@ function onResults(results) {
 
       $.ajax({
         type:'POST',
-        url:'/detail/home/send/',
+        url:'/translang/home/send/',
         data:JSON.stringify(results.multiHandLandmarks),
         success:function(json){
             console.log("data pass success",json);

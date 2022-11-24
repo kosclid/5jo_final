@@ -12,6 +12,12 @@ pip install django-bootstrap5
 pip install Mysqlclient
 pip install Pillow
 pip install scipy
+pip install opencv-python
+pip install pandas
+pip install tensorflow
+pip install -U scikit-learn
+pip install mediapipe
+pip install hangul-utils
 
 3. migrate
 마이그래이션 하기전에 accounts, recommand폴더에 migrations폴더 들어가서
