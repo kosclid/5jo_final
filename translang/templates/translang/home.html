@@ -1,10 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
@@ -19,81 +22,323 @@ ddd{{ context }}ddd
 <h1 id="ahha" style="color:black;">ahha</h1>
 
 
-  <div class="container">
-    <video class="input_video"></video>
+<div class="container">
+    <video class="input_video" style="display: none"></video>
     <canvas class="output_canvas" width="1280px" height="720px"></canvas>
-  </div>
+</div>
 
-<div id = 'result'></div>
-
+<div id='result'></div>
 
 
 <script type="module">
-const videoElement = document.getElementsByClassName('input_video')[0];
-const canvasElement = document.getElementsByClassName('output_canvas')[0];
-const canvasCtx = canvasElement.getContext('2d');
+    const videoElement = document.getElementsByClassName('input_video')[0];
+    const canvasElement = document.getElementsByClassName('output_canvas')[0];
+    const canvasCtx = canvasElement.getContext('2d');
 
-function onResults(results) {
-  canvasCtx.save();
-  canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-  canvasCtx.drawImage(
-      results.image, 0, 0, canvasElement.width, canvasElement.height);
-  if (results.multiHandLandmarks) {
-    for (const landmarks of results.multiHandLandmarks) {
-      drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
-                     {color: '#00FF00', lineWidth: 5});
-      drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
+    var a = 0;
+    var seq = [];
+    var rhcoorall = [];
+    var euclidall = [];
+
+    function onResults(results) {
+        canvasCtx.save();
+        canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+        canvasCtx.drawImage(
+            results.image, 0, 0, canvasElement.width, canvasElement.height);
+        if (results.multiHandLandmarks) {
+            for (const landmarks of results.multiHandLandmarks) {
+                drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
+                    {color: '#00FF00', lineWidth: 5});
+                drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
+
+                var actions = [
+                    'no',
+                    'dont',
+                    'sorry',
+                    'thank',
+                    'go',
+                    'do',
+                    'joy',
+                    'gjoy',
+                    'sua',
+                    'tired',
+                    'love',
+                    'j',
+                    'z',
+                    'meet',
+                    'hello',
+                    'sad'
+                ]
+
+                var actions2 = ['4', '5', '7', '8', '9', 'a', 'c', 'd', 'e', 'f', 'h', 'k', 'l',
+                    'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'w, 3', 'x', 'y', 'ㄱ',
+                    'ㄴ, 6', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ, b', 'ㅅ, ㅠ', 'ㅇ, 0', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ',
+                    'ㅍ', 'ㅎ', 'ㅏ, 1', 'ㅐ', 'ㅑ, v, 2', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ',
+                    'ㅚ', 'ㅛ', 'ㅜ', 'ㅟ', 'ㅡ, g', 'ㅢ', 'ㅣ, i']
+
+                let rh0 = results.multiHandLandmarks[0][0]
+                let rh1 = results.multiHandLandmarks[0][1]
+                let rh2 = results.multiHandLandmarks[0][2]
+                let rh3 = results.multiHandLandmarks[0][3]
+                let rh4 = results.multiHandLandmarks[0][4]
+                let rh5 = results.multiHandLandmarks[0][5]
+                let rh6 = results.multiHandLandmarks[0][6]
+                let rh7 = results.multiHandLandmarks[0][7]
+                let rh8 = results.multiHandLandmarks[0][8]
+                let rh9 = results.multiHandLandmarks[0][9]
+                let rh10 = results.multiHandLandmarks[0][10]
+                let rh11 = results.multiHandLandmarks[0][11]
+                let rh12 = results.multiHandLandmarks[0][12]
+                let rh13 = results.multiHandLandmarks[0][13]
+                let rh14 = results.multiHandLandmarks[0][14]
+                let rh15 = results.multiHandLandmarks[0][15]
+                let rh16 = results.multiHandLandmarks[0][16]
+                let rh17 = results.multiHandLandmarks[0][17]
+                let rh18 = results.multiHandLandmarks[0][18]
+                let rh19 = results.multiHandLandmarks[0][19]
+                let rh20 = results.multiHandLandmarks[0][20]
+
+                let vrh01 = [rh1["x"] - rh0["x"], rh1["y"] - rh0["y"], rh1["z"] - rh0["z"]]
+                let vrh12 = [rh2["x"] - rh1["x"], rh2["y"] - rh1["y"], rh2["z"] - rh1["z"]]
+                let vrh23 = [rh3["x"] - rh2["x"], rh3["y"] - rh2["y"], rh3["z"] - rh2["z"]]
+                let vrh34 = [rh4["x"] - rh3["x"], rh4["y"] - rh3["y"], rh4["z"] - rh3["z"]]
+                let vrh05 = [rh5["x"] - rh0["x"], rh5["y"] - rh0["y"], rh5["z"] - rh0["z"]]
+                let vrh56 = [rh6["x"] - rh5["x"], rh6["y"] - rh5["y"], rh6["z"] - rh5["z"]]
+                let vrh67 = [rh7["x"] - rh6["x"], rh7["y"] - rh6["y"], rh7["z"] - rh6["z"]]
+                let vrh78 = [rh8["x"] - rh7["x"], rh8["y"] - rh7["y"], rh8["z"] - rh7["z"]]
+                let vrh59 = [rh9["x"] - rh5["x"], rh9["y"] - rh5["y"], rh9["z"] - rh5["z"]]
+                let vrh910 = [rh10["x"] - rh9["x"], rh10["y"] - rh9["y"], rh10["z"] - rh9["z"]]
+                let vrh1011 = [rh11["x"] - rh10["x"], rh11["y"] - rh10["y"], rh11["z"] - rh10["z"]]
+                let vrh1112 = [rh12["x"] - rh11["x"], rh12["y"] - rh11["y"], rh12["z"] - rh11["z"]]
+                let vrh913 = [rh13["x"] - rh9["x"], rh13["y"] - rh9["y"], rh13["z"] - rh9["z"]]
+                let vrh1314 = [rh14["x"] - rh13["x"], rh14["y"] - rh13["y"], rh14["z"] - rh13["z"]]
+                let vrh1415 = [rh15["x"] - rh14["x"], rh15["y"] - rh14["y"], rh15["z"] - rh14["z"]]
+                let vrh1516 = [rh16["x"] - rh15["x"], rh16["y"] - rh15["y"], rh16["z"] - rh15["z"]]
+                let vrh1317 = [rh17["x"] - rh13["x"], rh17["y"] - rh13["y"], rh17["z"] - rh13["z"]]
+                let vrh017 = [rh17["x"] - rh0["x"], rh17["y"] - rh0["y"], rh17["z"] - rh0["z"]]
+                let vrh1718 = [rh18["x"] - rh17["x"], rh18["y"] - rh17["y"], rh18["z"] - rh17["z"]]
+                let vrh1819 = [rh19["x"] - rh18["x"], rh19["y"] - rh18["y"], rh19["z"] - rh18["z"]]
+                let vrh1920 = [rh20["x"] - rh19["x"], rh20["y"] - rh19["y"], rh20["z"] - rh19["z"]]
+
+                let uvrh01 = [vrh01[0] / Math.sqrt(vrh01[0] * vrh01[0] + vrh01[1] * vrh01[1] + vrh01[2] * vrh01[2]),
+                    vrh01[1] / Math.sqrt(vrh01[0] * vrh01[0] + vrh01[1] * vrh01[1] + vrh01[2] * vrh01[2]),
+                    vrh01[2] / Math.sqrt(vrh01[0] * vrh01[0] + vrh01[1] * vrh01[1] + vrh01[2] * vrh01[2])]
+                let uvrh12 = [vrh12[0] / Math.sqrt(vrh12[0] * vrh12[0] + vrh12[1] * vrh12[1] + vrh12[2] * vrh12[2]),
+                    vrh12[1] / Math.sqrt(vrh12[0] * vrh12[0] + vrh12[1] * vrh12[1] + vrh12[2] * vrh12[2]),
+                    vrh12[2] / Math.sqrt(vrh12[0] * vrh12[0] + vrh12[1] * vrh12[1] + vrh12[2] * vrh12[2])]
+                let uvrh23 = [vrh23[0] / Math.sqrt(vrh23[0] * vrh23[0] + vrh23[1] * vrh23[1] + vrh23[2] * vrh23[2]),
+                    vrh23[1] / Math.sqrt(vrh23[0] * vrh23[0] + vrh23[1] * vrh23[1] + vrh23[2] * vrh23[2]),
+                    vrh23[2] / Math.sqrt(vrh23[0] * vrh23[0] + vrh23[1] * vrh23[1] + vrh23[2] * vrh23[2])]
+                let uvrh34 = [vrh34[0] / Math.sqrt(vrh34[0] * vrh34[0] + vrh34[1] * vrh34[1] + vrh34[2] * vrh34[2]),
+                    vrh34[1] / Math.sqrt(vrh34[0] * vrh34[0] + vrh34[1] * vrh34[1] + vrh34[2] * vrh34[2]),
+                    vrh34[2] / Math.sqrt(vrh34[0] * vrh34[0] + vrh34[1] * vrh34[1] + vrh34[2] * vrh34[2])]
+                let uvrh05 = [vrh05[0] / Math.sqrt(vrh05[0] * vrh05[0] + vrh05[1] * vrh05[1] + vrh05[2] * vrh05[2]),
+                    vrh05[1] / Math.sqrt(vrh05[0] * vrh05[0] + vrh05[1] * vrh05[1] + vrh05[2] * vrh05[2]),
+                    vrh05[2] / Math.sqrt(vrh05[0] * vrh05[0] + vrh05[1] * vrh05[1] + vrh05[2] * vrh05[2])]
+                let uvrh56 = [vrh56[0] / Math.sqrt(vrh56[0] * vrh56[0] + vrh56[1] * vrh56[1] + vrh56[2] * vrh56[2]),
+                    vrh56[1] / Math.sqrt(vrh56[0] * vrh56[0] + vrh56[1] * vrh56[1] + vrh56[2] * vrh56[2]),
+                    vrh56[2] / Math.sqrt(vrh56[0] * vrh56[0] + vrh56[1] * vrh56[1] + vrh56[2] * vrh56[2])]
+                let uvrh67 = [vrh67[0] / Math.sqrt(vrh67[0] * vrh67[0] + vrh67[1] * vrh67[1] + vrh67[2] * vrh67[2]),
+                    vrh67[1] / Math.sqrt(vrh67[0] * vrh67[0] + vrh67[1] * vrh67[1] + vrh67[2] * vrh67[2]),
+                    vrh67[2] / Math.sqrt(vrh67[0] * vrh67[0] + vrh67[1] * vrh67[1] + vrh67[2] * vrh67[2])]
+                let uvrh78 = [vrh78[0] / Math.sqrt(vrh78[0] * vrh78[0] + vrh78[1] * vrh78[1] + vrh78[2] * vrh78[2]),
+                    vrh78[1] / Math.sqrt(vrh78[0] * vrh78[0] + vrh78[1] * vrh78[1] + vrh78[2] * vrh78[2]),
+                    vrh78[2] / Math.sqrt(vrh78[0] * vrh78[0] + vrh78[1] * vrh78[1] + vrh78[2] * vrh78[2])]
+                let uvrh59 = [vrh59[0] / Math.sqrt(vrh59[0] * vrh59[0] + vrh59[1] * vrh59[1] + vrh59[2] * vrh59[2]),
+                    vrh59[1] / Math.sqrt(vrh59[0] * vrh59[0] + vrh59[1] * vrh59[1] + vrh59[2] * vrh59[2]),
+                    vrh59[2] / Math.sqrt(vrh59[0] * vrh59[0] + vrh59[1] * vrh59[1] + vrh59[2] * vrh59[2])]
+                let uvrh910 = [vrh910[0] / Math.sqrt(vrh910[0] * vrh910[0] + vrh910[1] * vrh910[1] + vrh910[2] * vrh910[2]),
+                    vrh910[1] / Math.sqrt(vrh910[0] * vrh910[0] + vrh910[1] * vrh910[1] + vrh910[2] * vrh910[2]),
+                    vrh910[2] / Math.sqrt(vrh910[0] * vrh910[0] + vrh910[1] * vrh910[1] + vrh910[2] * vrh910[2])]
+                let uvrh1011 = [vrh1011[0] / Math.sqrt(vrh1011[0] * vrh1011[0] + vrh1011[1] * vrh1011[1] + vrh1011[2] * vrh1011[2]),
+                    vrh1011[1] / Math.sqrt(vrh1011[0] * vrh1011[0] + vrh1011[1] * vrh1011[1] + vrh1011[2] * vrh1011[2]),
+                    vrh1011[2] / Math.sqrt(vrh1011[0] * vrh1011[0] + vrh1011[1] * vrh1011[1] + vrh1011[2] * vrh1011[2])]
+                let uvrh1112 = [vrh1112[0] / Math.sqrt(vrh1112[0] * vrh1112[0] + vrh1112[1] * vrh1112[1] + vrh1112[2] * vrh1112[2]),
+                    vrh1112[1] / Math.sqrt(vrh1112[0] * vrh1112[0] + vrh1112[1] * vrh1112[1] + vrh1112[2] * vrh1112[2]),
+                    vrh1112[2] / Math.sqrt(vrh1112[0] * vrh1112[0] + vrh1112[1] * vrh1112[1] + vrh1112[2] * vrh1112[2])]
+                let uvrh913 = [vrh913[0] / Math.sqrt(vrh913[0] * vrh913[0] + vrh913[1] * vrh913[1] + vrh913[2] * vrh913[2]),
+                    vrh913[1] / Math.sqrt(vrh913[0] * vrh913[0] + vrh913[1] * vrh913[1] + vrh913[2] * vrh913[2]),
+                    vrh913[2] / Math.sqrt(vrh913[0] * vrh913[0] + vrh913[1] * vrh913[1] + vrh913[2] * vrh913[2])]
+                let uvrh1314 = [vrh1314[0] / Math.sqrt(vrh1314[0] * vrh1314[0] + vrh1314[1] * vrh1314[1] + vrh1314[2] * vrh1314[2]),
+                    vrh1314[1] / Math.sqrt(vrh1314[0] * vrh1314[0] + vrh1314[1] * vrh1314[1] + vrh1314[2] * vrh1314[2]),
+                    vrh1314[2] / Math.sqrt(vrh1314[0] * vrh1314[0] + vrh1314[1] * vrh1314[1] + vrh1314[2] * vrh1314[2])]
+                let uvrh1415 = [vrh1415[0] / Math.sqrt(vrh1415[0] * vrh1415[0] + vrh1415[1] * vrh1415[1] + vrh1415[2] * vrh1415[2]),
+                    vrh1415[1] / Math.sqrt(vrh1415[0] * vrh1415[0] + vrh1415[1] * vrh1415[1] + vrh1415[2] * vrh1415[2]),
+                    vrh1415[2] / Math.sqrt(vrh1415[0] * vrh1415[0] + vrh1415[1] * vrh1415[1] + vrh1415[2] * vrh1415[2])]
+                let uvrh1516 = [vrh1516[0] / Math.sqrt(vrh1516[0] * vrh1516[0] + vrh1516[1] * vrh1516[1] + vrh1516[2] * vrh1516[2]),
+                    vrh1516[1] / Math.sqrt(vrh1516[0] * vrh1516[0] + vrh1516[1] * vrh1516[1] + vrh1516[2] * vrh1516[2]),
+                    vrh1516[2] / Math.sqrt(vrh1516[0] * vrh1516[0] + vrh1516[1] * vrh1516[1] + vrh1516[2] * vrh1516[2])]
+                let uvrh1317 = [vrh1317[0] / Math.sqrt(vrh1317[0] * vrh1317[0] + vrh1317[1] * vrh1317[1] + vrh1317[2] * vrh1317[2]),
+                    vrh1317[1] / Math.sqrt(vrh1317[0] * vrh1317[0] + vrh1317[1] * vrh1317[1] + vrh1317[2] * vrh1317[2]),
+                    vrh1317[2] / Math.sqrt(vrh1317[0] * vrh1317[0] + vrh1317[1] * vrh1317[1] + vrh1317[2] * vrh1317[2])]
+                let uvrh017 = [vrh017[0] / Math.sqrt(vrh017[0] * vrh017[0] + vrh017[1] * vrh017[1] + vrh017[2] * vrh017[2]),
+                    vrh017[1] / Math.sqrt(vrh017[0] * vrh017[0] + vrh017[1] * vrh017[1] + vrh017[2] * vrh017[2]),
+                    vrh017[2] / Math.sqrt(vrh017[0] * vrh017[0] + vrh017[1] * vrh017[1] + vrh017[2] * vrh017[2])]
+                let uvrh1718 = [vrh1718[0] / Math.sqrt(vrh1718[0] * vrh1718[0] + vrh1718[1] * vrh1718[1] + vrh1718[2] * vrh1718[2]),
+                    vrh1718[1] / Math.sqrt(vrh1718[0] * vrh1718[0] + vrh1718[1] * vrh1718[1] + vrh1718[2] * vrh1718[2]),
+                    vrh1718[2] / Math.sqrt(vrh1718[0] * vrh1718[0] + vrh1718[1] * vrh1718[1] + vrh1718[2] * vrh1718[2])]
+                let uvrh1819 = [vrh1819[0] / Math.sqrt(vrh1819[0] * vrh1819[0] + vrh1819[1] * vrh1819[1] + vrh1819[2] * vrh1819[2]),
+                    vrh1819[1] / Math.sqrt(vrh1819[0] * vrh1819[0] + vrh1819[1] * vrh1819[1] + vrh1819[2] * vrh1819[2]),
+                    vrh1819[2] / Math.sqrt(vrh1819[0] * vrh1819[0] + vrh1819[1] * vrh1819[1] + vrh1819[2] * vrh1819[2])]
+                let uvrh1920 = [vrh1920[0] / Math.sqrt(vrh1920[0] * vrh1920[0] + vrh1920[1] * vrh1920[1] + vrh1920[2] * vrh1920[2]),
+                    vrh1920[1] / Math.sqrt(vrh1920[0] * vrh1920[0] + vrh1920[1] * vrh1920[1] + vrh1920[2] * vrh1920[2]),
+                    vrh1920[2] / Math.sqrt(vrh1920[0] * vrh1920[0] + vrh1920[1] * vrh1920[1] + vrh1920[2] * vrh1920[2])]
 
 
+                var d = [uvrh01[0], uvrh01[1], uvrh01[2], uvrh12[0], uvrh12[1], uvrh12[2], uvrh23[0], uvrh23[1], uvrh23[2],
+                    uvrh34[0], uvrh34[1], uvrh34[2], uvrh05[0], uvrh05[1], uvrh05[2], uvrh56[0], uvrh56[1], uvrh56[2],
+                    uvrh67[0], uvrh67[1], uvrh67[2], uvrh78[0], uvrh78[1], uvrh78[2], uvrh59[0], uvrh59[1], uvrh59[2],
+                    uvrh910[0], uvrh910[1], uvrh910[2], uvrh1011[0], uvrh1011[1], uvrh1011[2], uvrh1112[0], uvrh1112[1], uvrh1112[2],
+                    uvrh913[0], uvrh913[1], uvrh913[2], uvrh1314[0], uvrh1314[1], uvrh1314[2], uvrh1415[0], uvrh1415[1], uvrh1415[2],
+                    uvrh1516[0], uvrh1516[1], uvrh1516[2], uvrh1317[0], uvrh1317[1], uvrh1317[2], uvrh017[0], uvrh017[1], uvrh017[2],
+                    uvrh1718[0], uvrh1718[1], uvrh1718[2], uvrh1819[0], uvrh1819[1], uvrh1819[2], uvrh1920[0], uvrh1920[1], uvrh1920[2]]
+
+                var rhcoor = []
+                var i = 0
+                for (var step = 0; step < 21; step++) {
+                    rhcoor[i] = results.multiHandLandmarks[0][step]['x']
+                    rhcoor[i + 1] = results.multiHandLandmarks[0][step]['y']
+                    rhcoor[i + 2] = results.multiHandLandmarks[0][step]['z']
+                    i = i + 3
+                }
+
+                seq[a] = d
+                rhcoorall[a] = rhcoor
+                a = a + 1
 
 
-      $.ajax({
-        type:'POST',
-        url:'/translang/home/send/',
-        data:JSON.stringify(results.multiHandLandmarks),
-        success:function(json){
-            console.log("data pass success",json);
-            document.querySelector("#result").innerHTML = `
-            <h2>동작</h2>
-            ${json.result}
-            `
-        },
-        error : function(xhr,errmsg,err) {
-        console.log(xhr.status + ": " + xhr.responseText);
+                function euclidian(array1, array2) {
+                    {#lenarray = array1.length()#}
+                    var dis = 0
+                    array1 = array1.flat(1)
+                    array2 = array2.flat(1)
+                    for (var step = 0; step < 63; step++) {
+                        var dissmall = Math.sqrt(Math.abs(Math.pow(array1[step], 2) - Math.pow(array2[step], 2)))
+                        dis = dis + dissmall
+                    }
+                    return dis;
+                }
+
+
+                var data = seq.slice(-30,)
+                var euc1 = rhcoorall.slice(-2, -1)
+                var euc2 = rhcoorall.slice(-1,)
+                var euc = euclidian(euc1, euc2)
+                var mean = 0;
+
+                euclidall.push(euc)
+                if (euclidall.length>10){
+                    var eucmean = euclidall.slice(-10,)
+                    const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
+                    var mean = average(eucmean)
+                }
+                {#console.log('euclid', mean)#}
+
+                if (mean > 3) {
+                    if (seq.length >= 30) {
+                        tf.loadLayersModel('{% static 'js/models/model/model.json' %}').then(function (model) {
+                            var result = model.predict(tf.tensor([data]))
+
+                            var resultf = result.flatten()
+                            {#console.log(resultf)#}
+                            const values = resultf.dataSync();
+                            const arr = Array.from(values);
+                            {#console.log(values);#}
+                            {#console.log(arr);#}
+
+                            function argMax(array) {
+                                return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
+                            }
+
+                            var act_num = argMax(arr)
+                            console.log(actions[act_num]);
+                            var act = actions[act_num]
+
+                            document.querySelector("#result").innerHTML = `
+                     <h2>동작</h2>
+                     ${act}
+                     `
+                        });
+                    }
+                } else {
+
+                    tf.loadLayersModel('{% static 'js/models/signmodel/model.json' %}').then(function (model) {
+                        var a = model.predict(tf.tensor([[
+                            uvrh01[0], uvrh01[1], uvrh01[2], uvrh12[0], uvrh12[1], uvrh12[2], uvrh23[0], uvrh23[1], uvrh23[2],
+                            uvrh34[0], uvrh34[1], uvrh34[2], uvrh05[0], uvrh05[1], uvrh05[2], uvrh56[0], uvrh56[1], uvrh56[2],
+                            uvrh67[0], uvrh67[1], uvrh67[2], uvrh78[0], uvrh78[1], uvrh78[2], uvrh59[0], uvrh59[1], uvrh59[2],
+                            uvrh910[0], uvrh910[1], uvrh910[2], uvrh1011[0], uvrh1011[1], uvrh1011[2], uvrh1112[0], uvrh1112[1], uvrh1112[2],
+                            uvrh913[0], uvrh913[1], uvrh913[2], uvrh1314[0], uvrh1314[1], uvrh1314[2], uvrh1415[0], uvrh1415[1], uvrh1415[2],
+                            uvrh1516[0], uvrh1516[1], uvrh1516[2], uvrh1317[0], uvrh1317[1], uvrh1317[2], uvrh017[0], uvrh017[1], uvrh017[2],
+                            uvrh1718[0], uvrh1718[1], uvrh1718[2], uvrh1819[0], uvrh1819[1], uvrh1819[2], uvrh1920[0], uvrh1920[1], uvrh1920[2]
+                        ]]))
+                        var data = a.flatten()
+                        {#console.log(data)#}
+                        const values = data.dataSync();
+                        const arr = Array.from(values);
+                        {#console.log(values);#}
+                        {#console.log(arr);#}
+
+                        function argMax(array) {
+                            return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
+                        }
+
+                        var act_num = argMax(arr)
+                        console.log(actions2[act_num]);
+                        var act = actions2[act_num]
+
+                        document.querySelector("#result").innerHTML = `
+                     <h2>동작</h2>
+                     ${act}
+                     `
+                    });
+                }
+
+
+                {#그는 좋은 코드였습니다...#}
+                {#$.ajax({#}
+                {#  type:'POST',#}
+                {#  url:'/translang/home/send/',#}
+                {#  data:JSON.stringify(results.multiHandLandmarks),#}
+                {#  success:function(json){#}
+                {#      console.log("data pass success",json);#}
+                {#      document.querySelector("#result").innerHTML = `#}
+                {#      <h2>동작</h2>#}
+                {#      ${json.result}#}
+                {#      `#}
+                {#  },#}
+                {#  error : function(xhr,errmsg,err) {#}
+                {#  console.log(xhr.status + ": " + xhr.responseText);#}
+                {#  }});#}
+
+
+            }
         }
-   });
-
-
-
-
+        canvasCtx.restore();
     }
-  }
-  canvasCtx.restore();
-}
 
-const hands = new Hands({locateFile: (file) => {
-  return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
-}});
-hands.setOptions({
-  maxNumHands: 2,
-  modelComplexity: 1,
-  minDetectionConfidence: 0.5,
-  minTrackingConfidence: 0.5
-});
-hands.onResults(onResults);
+    const hands = new Hands({
+        locateFile: (file) => {
+            return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+        }
+    });
+    hands.setOptions({
+        maxNumHands: 2,
+        modelComplexity: 1,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5
+    });
+    hands.onResults(onResults);
 
-const camera = new Camera(videoElement, {
-  onFrame: async () => {
-    await hands.send({image: videoElement});
-  },
-  width: 1280,
-  height: 720
-});
-camera.start();
+    const camera = new Camera(videoElement, {
+        onFrame: async () => {
+            await hands.send({image: videoElement});
+        },
+        width: 1280,
+        height: 720
+    });
+    camera.start();
 </script>
-
-
-
 
 
 </body>

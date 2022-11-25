@@ -1,0 +1,176 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> O'article </title>
+    <link rel="stylesheet" href="{% static 'css/articlecss.css' %}.css">
+{#    <!-- korean font -->#}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap"
+          rel="stylesheet">
+
+{#    <!-- sidebar menu -->#}
+    <head class="do">
+{#        <!-- <meta charset="UTF-8">#}
+{#        <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+{#        <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->#}
+        <title> sidebar menu </title>
+{#        <!-- CSS -->#}
+        <link rel="stylesheet" href="{% static 'css/sidemenucss.css' %}">
+{#        <!-- Boxicons CSS -->#}
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel='stylesheet'>
+{#        <!-- korean font -->#}
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap"
+              rel="stylesheet">
+    </head>
+</head>
+<body>
+
+{#<!-- <header name 설정 -->#}
+<section>
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 text-center">
+                <h1 id="fh5co-logo"><a href="#"> O'SIGN <sup> co </sup> Article</a></h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+{#<!-- <article -->#}
+<div class="container-fluid">
+    <div class="row fh5co-post-entry">
+        <div class="column">
+            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                <figure>
+                    <a href="#"><img src="{% static 'img/signlanguage.jpeg' %}" class="img-responsive" alt=""></a>
+                </figure>
+                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
+                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
+                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
+            </article>
+        </div>
+{#        <!-- <article 아래 새로 업데이트 해주면 됨. 물론 수동이라는 것 -->#}
+        <div class="column">
+            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                <figure>
+                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive" alt=""></a>
+                </figure>
+                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 사랑용기 </a></span>
+                <h2 class="fh5co-article-title"><a href="#"> 소영아이</a></h2>
+                <span class="fh5co-meta fh5co-date"> Feb 14th, 2022 </span>
+            </article>
+        </div>
+        <div class="column">
+            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                <figure>
+                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive" alt=""></a>
+                </figure>
+                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
+                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
+                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
+            </article>
+        </div>
+        <div class="column">
+            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                <figure>
+                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive" alt=""></a>
+                </figure>
+                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
+                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
+                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
+            </article>
+        </div>
+        <div class="column">
+            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                <figure>
+                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive"></a>
+                </figure>
+                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
+                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
+                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
+            </article>
+        </div>
+        <div class="column">
+            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                <figure>
+                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive"></a>
+                </figure>
+                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
+                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
+                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
+            </article>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+
+
+{#<!-- sidebar -->#}
+<nav class="sidebar">
+    <header>
+        <div class="image-text">
+                    <span class="image">
+                        <img src="{% static 'img/logo.jpg' %}" alt="logo">
+                    </span>
+            <div class="text header-text">
+                <br>
+                <br>
+                <span class="name">O'SIGN</span><br>
+                <span class="profession">박소영  권오승<br>  김정민 정찬영 </span>
+            </div>
+        </div>
+
+{#        <!-- <i class='bx bx-chevron-right toggle'></i> -->#}
+    </header>
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="home.html">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text"> 홈화면</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-mobile-landscape icon'></i>
+                        <span class="text nav-text"> 수화 번역</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="booktable.html">
+                        <i class='bx bx-blanket icon'></i>
+                        <span class="text nav-text"> 수화 도감</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="society.html">
+                        <i class='bx bx-clipboard icon'></i>
+                        <span class="text nav-text"> 커뮤니티</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="article.html">
+                        <i class='bx bx-news icon'></i>
+                        <span class="text nav-text"> 관련 기사</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="qna.html">
+                        <i class='bx bxl-quora icon'></i>
+                        <span class="text nav-text"> Q&A</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

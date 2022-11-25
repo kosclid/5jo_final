@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Diction
+from .models import Dictionganada
 
 # Register your models here.
-admin.site.register(Diction)
+admin.site.register(Dictionganada)

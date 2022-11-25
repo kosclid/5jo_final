@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 def index(request):
     return render(
         request,
-        "translang/index.html",
+        "translang/test2.html",
         {},
     )
 
@@ -21,6 +21,16 @@ def test(request):
         "translang/test.html",
         {'test': test},
     )
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+def home1(request):
+    return render(
+        request,
+        "translang/home.html",
+        {},
+    )
+
 
 
 from django.http import JsonResponse
@@ -225,10 +235,3 @@ def home(request):
     return JsonResponse(context)
 
 
-@method_decorator(csrf_exempt, name="dispatch")
-def home1(request):
-    return render(
-        request,
-        "translang/home.html",
-        {},
-    )

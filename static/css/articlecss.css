@@ -1,0 +1,213 @@
+/* html {
+    background-color: aliceblue;
+} */
+/* body{
+    background-color: burlywood;
+    background-attachment: fixed;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+h1 {
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+}
+#fh5co-header .fh5co-social {
+    position: absolute !important;
+    right: 3em !important;
+    top: 3.2em;
+    z-index: 99;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+#fh5co-logo {
+    text-align: right;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+#fh5co-logo a {
+    color: black;
+    text-decoration-line: none;
+}
+#fh5co-logo a sup {
+    font-size: 20px;
+    top: -20px;
+}
+
+/* starts article */
+.fh5co-post-entry article {
+    text-align: center;
+    float: left;
+    margin-bottom: 50px;
+    padding-left: 5em;
+    padding-right: 3em;
+
+    margin-top: 50px;
+    margin-left: 135px;
+}
+/* @media screen and (max-width: 1200px) {
+    .fh5co-post-entry article {
+        margin-bottom: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .fh5co-post-entry article {
+      margin-bottom: 80px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  } */
+
+.fh5co-post-entry article a img {
+    opacity: 1;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    /* max-width: 300px;
+    height: auto;
+    margin: 5px 0; */
+
+    width: 250px;
+    height: 200px;
+    object-fit: cover;   /* 아래에서 다룰 속성값 */
+    border: 1px solid rgb(25, 19, 126);
+    border-radius: 10%;
+}
+
+.fh5co-post-entry article a:hover img {
+    opacity: .4;
+}
+
+.fh5co-post-entry article figure {
+    margin-bottom: 10px;
+}
+.fh5co-post-entry article h2 {
+    /* font-family: "Playfair Display", times, serif; */
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 34px;
+    color: #000;
+    margin-bottom: 10px;
+}
+.fh5co-post-entry article h2 a {
+    color: #000;
+    text-decoration-line: none;
+}
+/* @media screen and (max-width: 992px) {
+    .fh5co-post-entry article h2 {
+      font-size: 26px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .fh5co-post-entry article h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  } */
+.fh5co-post-entry article .fh5co-meta {
+    font-size: 15px;
+    /* font-family:'Times New Roman', Times, serif; */
+    font-family: 'Do Hyeon', sans-serif;
+    color: #999999;
+    margin-bottom: 5px;
+    display: block;
+}
+.fh5co-meta a{
+    text-decoration-line: none;
+}
+.fh5co-post-entry article .fh5co-meta.fh5co-date {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+}
+.fh5co-post-entry article .content-article {
+    padding-top: 5em;
+}
+.fh5co-post-entry article .content-article a {
+    text-decoration: underline;
+}
+
+/* <key section 취소 새로 만들어서 붙여넣기로 가보자 */ 
+/* #fh5co-offcanvas .fh5co-box {
+    float: left;
+    margin-bottom: 30px;
+    width: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+body {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #222;
+}
+html {
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    -webkit-text-size-adjust: 100%;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+::selection {
+    color: #fff;
+    background: #f7c873;
+} */
+
+/* columns */
+
+.column {
+    float: left;
+    width: 30%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* login singup footerrrrrr */
+.sidebar footer .containerlogin {
+  /* min-height: 100vh; */
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 100px;
+}
+.sidebar footer button{
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 80px;
+  box-shadow: 0 0 4px green;
+  /* padding: -5px -2; */
+  transition: 0.4s;
+}
+.sidebar footer .up{
+  color: white;
+  background: #BF2E97;
+}
+.sidebar footer .log{
+  color: green;
+  background-color: white;
+  border: 1px solid green;
+}
+.sidebar footer button:hover{
+  color: white;
+  box-shadow: 0 0 20px greenyellow;
+  background-color: green;
+}
+

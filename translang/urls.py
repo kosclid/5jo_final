@@ -5,4 +5,6 @@ urlpatterns = [
     path("", views.home1),
     path("home/send/", views.home),
     path("test/", views.test),
+    path("index/", views.index),
+
 ]
