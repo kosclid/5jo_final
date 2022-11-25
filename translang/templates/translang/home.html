@@ -206,6 +206,9 @@ ddd{{ context }}ddd
                 rhcoorall[a] = rhcoor
                 a = a + 1
 
+                function argMax(array) {
+                    return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
+                }
 
                 function euclidian(array1, array2) {
                     {#lenarray = array1.length()#}
@@ -227,7 +230,7 @@ ddd{{ context }}ddd
                 var mean = 0;
 
                 euclidall.push(euc)
-                if (euclidall.length>10){
+                if (euclidall.length > 10) {
                     var eucmean = euclidall.slice(-10,)
                     const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
                     var mean = average(eucmean)
@@ -244,15 +247,16 @@ ddd{{ context }}ddd
                             const values = resultf.dataSync();
                             const arr = Array.from(values);
                             {#console.log(values);#}
-                            {#console.log(arr);#}
 
-                            function argMax(array) {
-                                return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
-                            }
 
                             var act_num = argMax(arr)
-                            console.log(actions[act_num]);
-                            var act = actions[act_num]
+
+                            if (arr[act_num] > 0.7) {
+                                console.log(actions[act_num]);
+                                var act = actions[act_num]
+                            } else {
+                                act = '???'
+                            }
 
                             document.querySelector("#result").innerHTML = `
                      <h2>동작</h2>
@@ -279,13 +283,16 @@ ddd{{ context }}ddd
                         {#console.log(values);#}
                         {#console.log(arr);#}
 
-                        function argMax(array) {
-                            return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] > r[0] ? a : r))[1];
-                        }
 
                         var act_num = argMax(arr)
-                        console.log(actions2[act_num]);
-                        var act = actions2[act_num]
+
+                        if (arr[act_num] > 0.7) {
+                            console.log(actions2[act_num]);
+                            var act = actions2[act_num]
+                        } else {
+                            act = '???'
+                        }
+
 
                         document.querySelector("#result").innerHTML = `
                      <h2>동작</h2>
