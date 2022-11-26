@@ -1,0 +1,26 @@
+<div>
+            <form action="">
+                <select name="" class="nav-link active btn btn-succecss dropdown-toggle" id="changeImg" style="width:120px;">
+                    <option value="{{ bar.bar }}">1
+                    </option>
+                                        <option value="{{ bar.bar }}">1
+                    </option>
+                                        <option value="{{ bar.bar }}">1
+                    </option>
+                </select>
+            </form>
+            <img id="myImg" src="https://velog.velcdn.com/images/0902hero/post/eafeb1f8-9729-4302-ac7d-17c25cadc203/image.png" alt="옵션 그림" style="padding-left:375px;">
+            <script>
+                let changeimg = document.getElementById("changeImg");
+                let myImg = document.getElementById("myImg");
+
+                function changeImage() {
+                    let index = changeimg.selectedIndex;
+                    myImg.src = changeimg.options[index].value;
+                }
+
+                changeImage();
+                changeimg.onchange = changeImage;
+
+            </script>
+        </div>

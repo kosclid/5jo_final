@@ -13,7 +13,6 @@ def movetotext(request):
     )
 
 
-
 from django.http import JsonResponse
 import json
 import numpy as np

@@ -67,7 +67,7 @@
                 <li class="nav-link">
                     <a href="/dictionary/qna">
                         <i class='bx bxl-quora icon'></i>
-                        <span class="text nav-text"> Q&A</span>
+                        <span class="text nav-text"> 수화기부</span>
                     </a>
                 </li>
             </ul>
@@ -75,11 +75,21 @@
     </div>
     <footer>
         <div class="containerlogin">
-            <div>
-                <button class="log">Login</button>
-                <br>
-                <button class="up">Sign up</button>
-            </div>
+            {% if not user.is_authenticated %}
+
+                <div>
+                    <button class="log" type="button" onclick="location.href='/accounts/login'">Login</button>
+                    <br>
+                    <button class="up" type="button" onclick="location.href='/accounts/signup'">Sign up</button>
+                </div>
+            {% else %}
+                <div>
+                    <button class="log" type="button" onclick="location.href='/accounts/profile'">Profile</button>
+                    <br>
+                    <button class="up" type="button" onclick="location.href='/accounts/logout'">Log out</button>
+                </div>
+            {% endif %}
+
         </div>
     </footer>
 </nav>
@@ -90,7 +100,6 @@
     {# 응! base.html을 다른데서 사용하는 그거 맞아 #}
 
 </div>
-
 
 
 </body>

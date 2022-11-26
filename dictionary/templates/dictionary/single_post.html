@@ -1,0 +1,70 @@
+{% extends 'dictionary/base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+    <style>
+        .my_hidden {
+            display: none;
+        }
+    </style>
+
+
+    <div align="center">
+        <h1>포스팅 제목{{ post.post_name }}</h1><br>
+        <a>포스팅 작성자{{ post.user }}</a><br>
+        <a>포스팅 업데이트 날짜{{ post.updated_at }}</a>
+
+        <br>
+        <br>
+        <br>
+        <a>포스팅 내용{{ post.post_text }}</a>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        {% for comment in comment_list %}
+            댓글 작성자 {{ comment.user }} 날짜{{ comment.updated_at }}<br>
+            댓글 내용{{ comment.comment }}
+            <br>
+            <br>
+
+        {% endfor %}
+
+
+
+        <button class="btn btn-secondary btn-lg btn-block" onclick="
+                const description_id = 'movie_description_comment';
+                console.log('toggle ' + description_id);
+                document.querySelector('#' + description_id).classList.toggle('my_hidden');">댓글 작성
+        </button>
+        <br><br>
+
+        <div id="movie_description_comment" class="my_hidden">
+            <div class="container-fluid">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div>
+                            {#                                    <a href="{{ choose_ost }}/comments/new/">댓글 쓰기 </a>#}
+                            <form action="/dictionary/society/{{ post.id }}/comment/" method="post" novalidate>
+                                {% csrf_token %}
+
+                                <table>
+                                    {% bootstrap_form commentform %}
+                                </table>
+                                <input type="submit" value="댓글 저장"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

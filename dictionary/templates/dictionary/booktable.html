@@ -1,52 +1,204 @@
 {% extends 'dictionary/base.html' %}
+{% load django_bootstrap5 %}
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/societycss.css' %}">
+    <body id="page-top" style="background-color: lightskyblue">
 
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/booktablecss.css' %}">
+    <section class="notice">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/booktablecss.css' %}">
+
+
+        {#<div class="table_responsive">#}
+        {#<p class="booktable"> 수화 도감 </p>#}
+        {#    <table>#}
+        {#        <thead>#}
+        {#        <tr>#}
+        {#            <th> 의미</th>#}
+        {#            <th> 이미지</th>#}
+        {#        </tr>#}
+        {#        </thead>#}
+        {#        <tbody>#}
+        {#        <tr>#}
+        {#            <td> 뜻 <br>#}
+        {#                의미 <br>#}
+        {#            </td>#}
+        {#            <td><img src="img/book.jpeg"></td>#}
+        {#        </tr>#}
+        {#        </tbody>#}
+        {#    </table>#}
+        {#</div>#}
+
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+        <!-- Custom styles for this page -->
+        <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+
+        {#    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen"/>#}
+        {#        <link rel="stylesheet" href="{% static 'css/nav.css' %}"/>#}
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" value="기역" onclick='get(event)' checked/> ㄱ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" value="니은" onclick='get(event)'/> ㄴ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" value="디귿" onclick='get(event)'> ㄷ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" value="리을" onclick='get(event)'> ㄹ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" value="미음" onclick='get(event)'> ㅁ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" value="비읍" onclick='get(event)'> ㅂ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3"> ㅅ
+            </label>
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1"> ㅇ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2"> ㅈ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3"> ㅊ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2"> ㅋ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3"> ㅌ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2"> ㅍ
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3"> ㅎ
+            </label>
+
+        </div>
+
+
+        <p class="booktable"> 수화 도감 </p>
+        <div id="wrapper">
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <br>
+                    <div class="container-fluid">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                {#                                <h6 class="m-0 font-weight-bold text-primary">님께서 평가하신 정보입니다.</h6>#}
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="900px" cellspacing="0">
+                                        <colgroup>
+                                            <col style="width: 50%">
+                                            <col style="width: 25%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                <center>수화 뜻</center>
+                                            </th>
+                                            <th>
+                                                <center>사진</center>
+                                            </th>
+
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        {% for book in book_all %}
+                                            <tr>
+                                            <td>
+                                                수화 이름{{ book.lang_name }}<br>
+                                                수화 뜻 {{ book.lang_text }}
+                                            </td>
+                                            <td>
+                                                <img src="{{ book.lang_img.url }}" alt='Card image cap'
+                                                     style="width: 200px; height: auto;">
+                                            </td>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <script>
+
+        function get(event) {
+            console.log(event.target.value)
+
+
+                $.ajax({
+                  type:'POST',
+                  url:'/dictionary/book/',
+                  data:JSON.stringify(event.target.value),
+                  success:function(json){
+                      console.log()
+                      {#console.log("data pass success",json);#}
+                  },
+                  error : function(xhr,errmsg,err) {
+                  console.log(xhr.status + ": " + xhr.responseText);
+                  }});
+
+
+        }
 
 
 
-<div class="table_responsive">
-<p class="booktable"> 수화 도감 </p>
-    <table>
-        <thead>
-        <tr>
-            <th> 의미</th>
-            <th> 이미지</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <!-- <td> 01</td> -->
-            <td> 뜻 <br>
-                의미 <br>
-            </td>
-            <td><img src="img/book.jpeg"></td>
-        </tr>
-        <tr>
-            <!-- <td> 02 </td> -->
-            <td> dotsdjfoisgfejowijsdfsdfsfdofehwiugoiejowfijeowighiuewnfiefefwe</td>
-            <td><img src="img/book2.jpeg"></td>
-        </tr>
-        <tr>
-            <!-- <td> 03 </td> -->
-            <td> dot</td>
-            <td><img src="img/book2.jpeg"></td>
-        </tr>
-        <tr>
-            <!-- <td> 04 </td> -->
-            <td> dot</td>
-            <td><img src="img/book2.jpeg"></td>
-        </tr>
-        <tr>
-            <!-- <td> 05 </td> -->
-            <td> dot</td>
-            <td><img src="img/book2.jpeg"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+
+
+
+    </script>
+
+
+
+    {% bootstrap_javascript %}
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+
 
 {% endblock %}
+
+</body>

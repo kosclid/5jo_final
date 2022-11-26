@@ -1,67 +1,171 @@
 {% extends 'dictionary/base.html' %}
+{% load django_bootstrap5 %}
 {% load static %}
 
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/societycss.css' %}">
+    <body id="page-top" style="background-color: lightskyblue">
+
 
     <section class="notice">
-        <div class="page-title">
-            <div class="container">
-                <h3>무엇이든 적고 시작해</h3>
-            </div>
-        </div>
+        {#        <div class="page-title">#}
+        {#            <div class="container">#}
+        {#                <h3>무엇이든 적고 시작해</h3>#}
+        {#            </div>#}
+        {#        </div>#}
+        {##}
+        {#        <!-- board seach area -->#}
+        {#        <div id="board-search">#}
+        {#            <div class="container">#}
+        {#                <div class="search-window">#}
+        {#                    <form action="">#}
+        {#                        <div class="search-wrap">#}
+        {#                            <label for="search" class="blind">내용 검색</label>#}
+        {#                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">#}
+        {#                            <button type="submit" class="btn btn-dark">검색</button>#}
+        {#                        </div>#}
+        {#                    </form>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <!-- board list area -->#}
+        {#        <div id="board-list">#}
+        {#            <div class="container">#}
+        {#                <table class="board-table">#}
+        {#                    <thead>#}
+        {#                    <tr>#}
+        {#                        <th scope="col" class="th-num">번호</th>#}
+        {#                        <th scope="col" class="th-title">제목</th>#}
+        {#                        <th scope="col" class="th-date">등록일</th>#}
+        {#                    </tr>#}
+        {#                    </thead>#}
+        {#                    <tbody>#}
+        {#                    <tr>#}
+        {#                        <td>3</td>#}
+        {#                        <th>#}
+        {#                            <a href="#!">[공지사항] 개인정보 등록 변경안내</a>#}
+        {#                            <!-- <p>테스트</p> -->#}
+        {#                        </th>#}
+        {#                        <td>2002.02.14</td>#}
+        {#                    </tr>#}
+        {##}
+        {#                    <tr>#}
+        {#                        <td>2</td>#}
+        {#                        <th><a href="#!">나도 일 할까나</a></th>#}
+        {#                        <td>2022.11.25</td>#}
+        {#                    </tr>#}
+        {##}
+        {#                    <tr>#}
+        {#                        <td>1</td>#}
+        {#                        <th><a href="#!">첫 글</a></th>#}
+        {#                        <td>2022.11.25</td>#}
+        {#                    </tr>#}
+        {#                    </tbody>#}
+        {#                </table>#}
+        {#            </div>#}
+        {#        </div>#}
 
-        <!-- board seach area -->
-        <div id="board-search">
-            <div class="container">
-                <div class="search-window">
-                    <form action="">
-                        <div class="search-wrap">
-                            <label for="search" class="blind">내용 검색</label>
-                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                            <button type="submit" class="btn btn-dark">검색</button>
+
+        {#        {% bootstrap_css %}#}
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+        <!-- Custom styles for this page -->
+        <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+
+        {#    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen"/>#}
+        {#        <link rel="stylesheet" href="{% static 'css/nav.css' %}"/>#}
+
+
+        <div id="wrapper">
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <br>
+                    <div class="container-fluid">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                {#                                <h6 class="m-0 font-weight-bold text-primary">님께서 평가하신 정보입니다.</h6>#}
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <colgroup>
+                                            <col style="width: 50%">
+                                            <col style="width: 25%">
+                                            <col style="width: 25%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                <center>포스팅 제목</center>
+                                            </th>
+                                            <th>
+                                                <center>작성자</center>
+                                            </th>
+                                            <th>
+                                                <center>업데이트 날짜</center>
+                                            </th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        {% for post in post_all %}
+                                            <tr>
+                                            <td>
+                                                <a href = '/dictionary/society/{{ post.id }}'>{{ post.post_name }}</a>
+                                            </td>
+                                            <td>
+                                                {{ post.user }}
+                                            </td>
+                                            <td>
+                                                {{ post.updated_at }}
+                                            </td>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <button type="button"
+                                    onclick="location.href='/dictionary/society/new'"
+                                    class="btn btn-success">글쓰기
+                            </button>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- board list area -->
-        <div id="board-list">
-            <div class="container">
-                <table class="board-table">
-                    <thead>
-                    <tr>
-                        <th scope="col" class="th-num">번호</th>
-                        <th scope="col" class="th-title">제목</th>
-                        <th scope="col" class="th-date">등록일</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>3</td>
-                        <th>
-                            <a href="#!">[공지사항] 개인정보 등록 변경안내</a>
-                            <!-- <p>테스트</p> -->
-                        </th>
-                        <td>2002.02.14</td>
-                    </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <th><a href="#!">나도 일 할까나</a></th>
-                        <td>2022.11.25</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <th><a href="#!">첫 글</a></th>
-                        <td>2022.11.25</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
     </section>
+
+
+    {% bootstrap_javascript %}
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+
+
 {% endblock %}
+
+</body>

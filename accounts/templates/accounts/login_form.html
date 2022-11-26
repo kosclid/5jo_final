@@ -4,23 +4,17 @@
 
 {% block content %}
 
-    <link rel="stylesheet" href="{% static 'css/logsign.css' %}" media="screen"/>
-    <div style="color: white;">
+    <div align="center">
+        <div style="color: white;">
+            <h2 style="color: white;">login</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
 
-        <h2 style="color: white;">login</h2>
-
-        <form action="" method="post">
-            {% csrf_token %}
-
-            {#    <table>#}
-            {#        {{ form.as_table }}#}
-            {#    </table>#}
-            {% bootstrap_form form %}
-
-            <div style="display: inline-block; margin: 0 5px;  float: right;">
-                <button type="submit" class="btn btn-primary">로그인</button>
-            </div>
-        </form>
+                <div style="display: inline-block; margin: 0 5px;  float: right;">
+                    <button type="submit" class="btn btn-primary">로그인</button>
+                </div>
+            </form>
+        </div>
     </div>
-
 {% endblock %}
