@@ -5,29 +5,10 @@ from django.utils.decorators import method_decorator
 
 
 @method_decorator(csrf_exempt, name="dispatch")
-def index(request):
+def movetotext(request):
     return render(
         request,
-        "translang/test2.html",
-        {},
-    )
-
-
-@method_decorator(csrf_exempt, name="dispatch")
-def test(request):
-    test ='hello'
-    return render(
-        request,
-        "translang/test.html",
-        {'test': test},
-    )
-
-
-@method_decorator(csrf_exempt, name="dispatch")
-def home1(request):
-    return render(
-        request,
-        "translang/home.html",
+        "translang/movetotext.html",
         {},
     )
 

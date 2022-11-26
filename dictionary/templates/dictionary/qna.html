@@ -1,133 +1,33 @@
+{% extends 'dictionary/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> 커뮤니티 공간</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/qnacss.css' %}">
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/qnacss.css' %}">
 
-          <!-- sidebar menu -->
-          <head class="do">
-            <!-- <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    
-            <title> sidebar menu </title>
-            <!-- CSS -->
-            <link rel="stylesheet" href="{% static 'css/sidemenucss.css' %}">
-            <!-- Boxicons CSS -->
-            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-            <!-- korean font -->
-            <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
-        </head>
-  
-    </head>
-    <body>
-      <section class="notice">
+    <section class="notice">
         <form>
-          <label for="qna">
-            자주 묻는 질문
-          </label>
-          <select id="qna" name="qna">
-            <option value="">-- 선택하세요 --</option>
-            <optgroup label="서류">
-              <option value="work">장애인 구직자 이력서 등록</option>
-              <option value="request">직무요청서</option>
-            </optgroup>
-            <optgroup label="정보 공유 사항">
-              <option value="con"> 상담 신청 </option>
-              <option value="camp"> 취업 캠프 </option>
-              <option value="program"> 진로 체험 프로그램 </option>
-            </optgroup>
-            <optgroup label="신규 질문">
-              <option value="new"> 질문 등록하러 가기 </option>
-            </optgroup>
-          </select>
+            <label for="qna">
+                자주 묻는 질문
+            </label>
+            <select id="qna" name="qna">
+                <option value="">-- 선택하세요 --</option>
+                <optgroup label="서류">
+                    <option value="work">장애인 구직자 이력서 등록</option>
+                    <option value="request">직무요청서</option>
+                </optgroup>
+                <optgroup label="정보 공유 사항">
+                    <option value="con"> 상담 신청</option>
+                    <option value="camp"> 취업 캠프</option>
+                    <option value="program"> 진로 체험 프로그램</option>
+                </optgroup>
+                <optgroup label="신규 질문">
+                    <option value="new"> 질문 등록하러 가기</option>
+                </optgroup>
+            </select>
         </form>
         <h1> * 수화 상담하러 가기</h1>
-      </section>
-
-      <!-- sidebar -->
-      <nav class="sidebar">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="{% static 'img/logo.jpg' %}" alt="logo">
-                </span>
-                <div class="text header-text">
-                  <br>
-                  <br>
-                    <span class="name">O'SIGN</span><br> 
-                    <span class="profession">박소영  권오승<br>  김정민 정찬영 </span>
-                </div>
-            </div>
-
-            <!-- <i class='bx bx-chevron-right toggle'></i> -->
-        </header>
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <!-- <li class="nav-link">
-                            <i class='bx bx-home-alt'></i>
-                            <span class="text nav-text"> 홈화면</span>
-                    </li> -->
-
-                    <li class="nav-link">
-                        <a href="home.html">
-                            <i class='bx bx-home-alt icon'></i>
-                            <span class="text nav-text"> 홈화면</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-mobile-landscape icon'></i>
-                            <span class="text nav-text"> 수화 번역</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="booktable.html">
-                            <i class='bx bx-blanket icon'></i>
-                            <span class="text nav-text"> 수화 도감</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="society.html">
-                            <i class='bx bx-clipboard icon'></i>
-                            <span class="text nav-text"> 커뮤니티</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="article.html">
-                            <i class='bx bx-news icon'></i>
-                            <span class="text nav-text"> 관련 기사</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="qna.html">
-                            <i class='bx bxl-quora icon'></i>
-                            <span class="text nav-text"> Q&A</span>
-                        </a>
-                    </li>
-                </ul>
-              </div>
+    </section>
 
 
-          
 
-            <!-- <script>
-            let btn = document.querySelector("#btn");
-            let sidebar = document.querySelector(".sidebar");
-            btn.onclick = function() {
-            sidebar.classList.toggle("active")}
-            
-            <div class="toggle-switch">
-                <span class="switch"></span>
-            </div>
-            </script> -->
-
-        </div>
-    </nav>
-
-    </body>
-</html>
+{% endblock %}

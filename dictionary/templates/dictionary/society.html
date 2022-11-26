@@ -1,175 +1,67 @@
+{% extends 'dictionary/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title> 커뮤니티 </title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/societycss.css' %}">
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/societycss.css' %}">
 
-         <!-- sidebar menu -->
-         <head class="do">
-            <!-- <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    
-            <title> sidebar menu </title>
-            <!-- CSS -->
-            <link rel="stylesheet" href="{% static 'css/sidemenucss.css' %}">
-            <!-- Boxicons CSS -->
-            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-            <!-- korean font -->
-            <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
-        </head>
-    </head>
-    <body>
-        <section class="notice">
-            <div class="page-title">
-                  <div class="container">
-                      <h3>무엇이든 적고 시작해</h3>
-                  </div>
-              </div>
-          
-              <!-- board seach area -->
-              <div id="board-search">
-                  <div class="container">
-                      <div class="search-window">
-                          <form action="">
-                              <div class="search-wrap">
-                                  <label for="search" class="blind">내용 검색</label>
-                                  <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                                  <button type="submit" class="btn btn-dark">검색</button>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-             
-            <!-- board list area -->
-              <div id="board-list">
-                  <div class="container">
-                      <table class="board-table">
-                          <thead>
-                          <tr>
-                              <th scope="col" class="th-num">번호</th>
-                              <th scope="col" class="th-title">제목</th>
-                              <th scope="col" class="th-date">등록일</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                              <td>3</td>
-                              <th>
-                                <a href="#!">[공지사항] 개인정보 등록 변경안내</a>
-                                <!-- <p>테스트</p> -->
-                              </th>
-                              <td>2002.02.14</td>
-                          </tr>
-          
-                          <tr>
-                              <td>2</td>
-                              <th><a href="#!">나도 일 할까나</a></th>
-                              <td>2022.11.25</td>
-                          </tr>
-          
-                          <tr>
-                              <td>1</td>
-                              <th><a href="#!">첫 글</a></th>
-                              <td>2022.11.25</td>
-                          </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          
-          </section>
-          <!-- sidebar -->
-        <nav class="sidebar">
-            <header>
-                <div class="image-text">
-                    <span class="image">
-                        <img src="{% static 'img/logo.jpg' %}" alt="logo">
-                    </span>
-                    <div class="text header-text">
-                      <br>
-                      <br>
-                        <span class="name">O'SIGN</span><br> 
-                        <span class="profession">박소영  권오승<br>  김정민 정찬영 </span>
-                    </div>
-                </div>
-  
-                <!-- <i class='bx bx-chevron-right toggle'></i> -->
-            </header>
-            <div class="menu-bar">
-                <div class="menu">
-                    <ul class="menu-links">
-                        <!-- <li class="nav-link">
-                                <i class='bx bx-home-alt'></i>
-                                <span class="text nav-text"> 홈화면</span>
-                        </li> -->
-  
-                        <li class="nav-link">
-                            <a href="home.html">
-                                <i class='bx bx-home-alt icon'></i>
-                                <span class="text nav-text"> 홈화면</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class='bx bx-mobile-landscape icon'></i>
-                                <span class="text nav-text"> 수화 번역</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="booktable.html">
-                                <i class='bx bx-blanket icon'></i>
-                                <span class="text nav-text"> 수화 도감</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="society.html">
-                                <i class='bx bx-clipboard icon'></i>
-                                <span class="text nav-text"> 커뮤니티</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="article.html">
-                                <i class='bx bx-news icon'></i>
-                                <span class="text nav-text"> 관련 기사</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="qna.html">
-                                <i class='bx bxl-quora icon'></i>
-                                <span class="text nav-text"> Q&A</span>
-                            </a>
-                        </li>
-                    </ul>
-                  </div>
-  
-    
-              
-  
-                <!-- <script>
-                let btn = document.querySelector("#btn");
-                let sidebar = document.querySelector(".sidebar");
-                btn.onclick = function() {
-                sidebar.classList.toggle("active")}
-                
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-                </script> -->
-  
+    <section class="notice">
+        <div class="page-title">
+            <div class="container">
+                <h3>무엇이든 적고 시작해</h3>
             </div>
-            <footer>
-              <div class="containerlogin">
-                <div>
-                  <button class="log">Login</button><br>
-                  <button class="up">Sign up</button>
+        </div>
+
+        <!-- board seach area -->
+        <div id="board-search">
+            <div class="container">
+                <div class="search-window">
+                    <form action="">
+                        <div class="search-wrap">
+                            <label for="search" class="blind">내용 검색</label>
+                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                            <button type="submit" class="btn btn-dark">검색</button>
+                        </div>
+                    </form>
                 </div>
-              </div>
-            </footer>
-        </nav>
-    </body>
-</html>
+            </div>
+        </div>
+
+        <!-- board list area -->
+        <div id="board-list">
+            <div class="container">
+                <table class="board-table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="th-num">번호</th>
+                        <th scope="col" class="th-title">제목</th>
+                        <th scope="col" class="th-date">등록일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>3</td>
+                        <th>
+                            <a href="#!">[공지사항] 개인정보 등록 변경안내</a>
+                            <!-- <p>테스트</p> -->
+                        </th>
+                        <td>2002.02.14</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <th><a href="#!">나도 일 할까나</a></th>
+                        <td>2022.11.25</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <th><a href="#!">첫 글</a></th>
+                        <td>2022.11.25</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
