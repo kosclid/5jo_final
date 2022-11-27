@@ -33,8 +33,8 @@ import json
 @method_decorator(csrf_exempt, name="dispatch")
 def book(request):
     if request.method == "POST":
-        data = json.loads(request.body)
-        book_all = Dictionganada.objects.filter(lang_initial='니은')
+        initial = request.POST.get('options')
+        book_all = Dictionganada.objects.filter(lang_initial=initial)
     else:
         book_all = Dictionganada.objects.filter(lang_initial='기역')
     return render(

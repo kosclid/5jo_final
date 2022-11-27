@@ -50,29 +50,30 @@
                 drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
 
                 var actions = [
-                    'no',
-                    'dont',
-                    'sorry',
-                    'thank',
-                    'go',
-                    'do',
-                    'joy',
-                    'gjoy',
-                    'sua',
-                    'tired',
-                    'love',
-                    'j',
-                    'z',
-                    'meet',
-                    'hello',
-                    'sad'
+                    ' no',
+                    ' dont',
+                    ' sorry',
+                    ' thank',
+                    ' go',
+                    ' do',
+                    ' joy',
+                    ' gjoy',
+                    ' sua',
+                    ' tired',
+                    ' love',
+                    ' j',
+                    ' z',
+                    ' meet',
+                    ' hello',
+                    ' sad',
+                    'delete'
                 ]
 
                 var actions2 = ['4', '5', '7', '8', '9', 'a', 'c', 'd', 'e', 'f', 'h', 'k', 'l',
                     'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'w, 3', 'x', 'y', 'ㄱ',
                     'ㄴ, 6', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ, b', 'ㅅ, ㅠ', 'ㅇ, 0', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ',
-                    'ㅍ', 'ㅎ', 'ㅏ, 1', 'ㅐ', 'ㅑ, v, 2', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ',
-                    'ㅚ', 'ㅛ', 'ㅜ', 'ㅟ', 'ㅡ, g', 'ㅢ', 'ㅣ, i']
+                    'e', 'ㅎ', 'ㅏ, 1', 'ㅐ', 'ㅑ, v, 2', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ',
+                    'ㅚ', 'ㅛ', 'ㅜ', 'ㅟ', 'ㅡ, g', 'ㅢ', 'i']
 
                 let rh0 = results.multiHandLandmarks[0][0]
                 let rh1 = results.multiHandLandmarks[0][1]
@@ -323,9 +324,9 @@
                     });
                 }
 
-                if (actionshow.length > 20) {
+                if (actionshow.length > 30) {
 
-                    var la = actionshow.slice(-20,)
+                    var la = actionshow.slice(-30,)
                     console.log('actionall', la)
 
                     const set = new Set(la);
@@ -335,7 +336,7 @@
                         if (la.slice(-1)[0] != '???') {
                             actshow = actshow + la.slice(-1)[0]
                             console.log('num', actshow)
-                            actionshow.splice(-20,);
+                            actionshow.splice(-30,);
                         }
                     }
 

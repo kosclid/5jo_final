@@ -46,49 +46,56 @@
         {#        <link rel="stylesheet" href="{% static 'css/nav.css' %}"/>#}
 
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" value="기역" onclick='get(event)' checked/> ㄱ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" value="니은" onclick='get(event)'/> ㄴ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" value="디귿" onclick='get(event)'> ㄷ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" value="리을" onclick='get(event)'> ㄹ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" value="미음" onclick='get(event)'> ㅁ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" value="비읍" onclick='get(event)'> ㅂ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3"> ㅅ
-            </label>
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1"> ㅇ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2"> ㅈ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3"> ㅊ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2"> ㅋ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3"> ㅌ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2"> ㅍ
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3"> ㅎ
-            </label>
+            <form class="d-flex" method="POST" action="">
 
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" value="기역" checked> ㄱ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" value="니은"> ㄴ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" value="디귿"> ㄷ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" value="리을"> ㄹ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" value="미음"> ㅁ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" value="비읍"> ㅂ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" value="시옷"> ㅅ
+                </label>
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" value="이응"> ㅇ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" value="지읒"> ㅈ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" value="치읓"> ㅊ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" value="키읔"> ㅋ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" value="티읕"> ㅌ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" value="피읖"> ㅍ
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" value="히읗"> ㅎ
+                </label>
+
+                <button class="btn btn-outline-success btn-lg btn-block" type="submit">
+                    조회
+                </button>
+
+            </form>
         </div>
 
 
@@ -147,34 +154,6 @@
 
 
     </section>
-
-    <script>
-
-        function get(event) {
-            console.log(event.target.value)
-
-
-                $.ajax({
-                  type:'POST',
-                  url:'/dictionary/book/',
-                  data:JSON.stringify(event.target.value),
-                  success:function(json){
-                      console.log()
-                      {#console.log("data pass success",json);#}
-                  },
-                  error : function(xhr,errmsg,err) {
-                  console.log(xhr.status + ": " + xhr.responseText);
-                  }});
-
-
-        }
-
-
-
-
-
-
-    </script>
 
 
 
