@@ -1,0 +1,61 @@
+{% extends 'dictionary/base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/qnacss.css' %}">#}
+
+{#        <form>#}
+{#            <label for="qna">#}
+{#                자주 묻는 질문#}
+{#            </label>#}
+{#            <select id="qna" name="qna">#}
+{#                <option value="">-- 선택하세요 --</option>#}
+{#                <optgroup label="서류">#}
+{#                    <option value="work">장애인 구직자 이력서 등록</option>#}
+{#                    <option value="request">직무요청서</option>#}
+{#                </optgroup>#}
+{#                <optgroup label="정보 공유 사항">#}
+{#                    <option value="con"> 상담 신청</option>#}
+{#                    <option value="camp"> 취업 캠프</option>#}
+{#                    <option value="program"> 진로 체험 프로그램</option>#}
+{#                </optgroup>#}
+{#                <optgroup label="신규 질문">#}
+{#                    <option value="new"> 질문 등록하러 가기</option>#}
+{#                </optgroup>#}
+{#            </select>#}
+{#        </form>#}
+{#        <h1> * 수화 상담하러 가기</h1>#}
+{% block content %}
+
+    <div align="center">
+
+        <div style="color: white;">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table style="color:white;">
+
+                    <form action="/dictionary/donate" method="POST" enctype="multipart/form-data">
+                        <input type="text" name="lang_name" placeholder="기부할 수화 이름">
+                        <br>
+                        <input type="text" name="lang_text" placeholder="기부할 수화 설명">
+                        <br>
+                        <input type="file" name="donate_video">
+
+                        {% csrf_token %}
+                        <input type="submit" value="Upload">
+                    </form>
+
+                    {#        {{ form.as_table }}#}
+                </table>
+                <div style="display: inline-block; margin: 0 5px;  float: right;">
+                    <button type="submit" class="btn btn-success">제출</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

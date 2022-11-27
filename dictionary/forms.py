@@ -1,5 +1,5 @@
 from django import forms
-from dictionary.models import Post, Post_Comment
+from dictionary.models import Post, Post_Comment, SignDonate
 
 
 class PostForm(forms.ModelForm):
@@ -13,3 +13,9 @@ class CommentForm(forms.ModelForm):
         model = Post_Comment
         # 유저에게 입력받은 field만
         fields = ["comment"]
+
+
+class DonateForm(forms.ModelForm):
+    class Meta:
+        model = SignDonate
+        fields = ["lang_name", 'lang_text', 'donate_video']

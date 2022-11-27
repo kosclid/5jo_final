@@ -8,83 +8,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap"
           rel="stylesheet">
 
-<section>
-<header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 text-center">
-                <h1 id="fh5co-logo"><a href="#"> O'SIGN <sup> co </sup> Article</a></h1>
+    <section>
+        <header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 text-center">
+                        <h1 id="fh5co-logo"><a href="#"> O'SIGN <sup> co </sup> Article</a></h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {#<!-- <article -->#}
+        <div class="container-fluid">
+            <div class="row fh5co-post-entry">
+                {% for art in art_all %}
+                    <div class="column">
+                        <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                            <figure>
+                                <a href="{{ art.art_link }}"><img src="{{ art.art_img.url }}" class="img-responsive"
+                                                 alt=""></a>
+                            </figure>
+                            <span class="fh5co-meta"><a href="{{ art.art_link }}"> {{ art.art_from }} </a></span>
+                            <h2 class="fh5co-article-title"><a href="{{ art.art_link }}"> {{ art.art_name }}</a></h2>
+                            <span class="fh5co-meta fh5co-date"> {{ art.updated_at }} </span>
+                        </article>
+                    </div>
+                {% endfor %}
+
             </div>
         </div>
-    </div>
-</header>
-
-{#<!-- <article -->#}
-<div class="container-fluid">
-    <div class="row fh5co-post-entry">
-        <div class="column">
-            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
-                <figure>
-                    <a href="#"><img src="{% static 'img/signlanguage.jpeg' %}" class="img-responsive" alt=""></a>
-                </figure>
-                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
-                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
-                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
-            </article>
-        </div>
-{#        <!-- <article 아래 새로 업데이트 해주면 됨. 물론 수동이라는 것 -->#}
-        <div class="column">
-            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
-                <figure>
-                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive" alt=""></a>
-                </figure>
-                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 사랑용기 </a></span>
-                <h2 class="fh5co-article-title"><a href="#"> 소영아이</a></h2>
-                <span class="fh5co-meta fh5co-date"> Feb 14th, 2022 </span>
-            </article>
-        </div>
-        <div class="column">
-            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
-                <figure>
-                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive" alt=""></a>
-                </figure>
-                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
-                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
-                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
-            </article>
-        </div>
-        <div class="column">
-            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
-                <figure>
-                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive" alt=""></a>
-                </figure>
-                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
-                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
-                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
-            </article>
-        </div>
-        <div class="column">
-            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
-                <figure>
-                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive"></a>
-                </figure>
-                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
-                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
-                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
-            </article>
-        </div>
-        <div class="column">
-            <article class="colcol-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
-                <figure>
-                    <a href="#"><img src="{% static 'img/hand.jpg' %}" class="img-responsive"></a>
-                </figure>
-                <span class="fh5co-meta"><a href="#"> 아누타 &amp; 공존가치 </a></span>
-                <h2 class="fh5co-article-title"><a href="#"> 플랜아이</a></h2>
-                <span class="fh5co-meta fh5co-date"> Nov 23rd, 2022 </span>
-            </article>
-        </div>
-    </div>
-</div>
-</section>
+    </section>
 
 {% endblock %}

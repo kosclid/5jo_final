@@ -9,7 +9,7 @@ urlpatterns = [
     path("society/new/", views.new_post),
     path("society/<int:pk>/", views.single_post),
     path("society/<int:pk>/comment/", views.post_comment),
-    path("qna/", views.qna),
+    path("donate/", views.donate),
     path("test/", views.test),
 
 ]

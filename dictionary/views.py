@@ -1,18 +1,19 @@
 from django.shortcuts import render, redirect
-from dictionary.forms import PostForm, CommentForm
+from dictionary.forms import PostForm, CommentForm, DonateForm
 from django.contrib.auth.decorators import login_required
-
-from dictionary.models import Post, Post_Comment, Dictionganada
+from . import models
+from dictionary.models import Post, Post_Comment, Dictionganada, Article
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 
 @method_decorator(csrf_exempt, name="dispatch")
 def article(request):
+    art_all = Article.objects.all()
     return render(
         request,
         "dictionary/article.html",
-        {}
+        {'art_all': art_all}
     )
 
 
@@ -27,6 +28,7 @@ def home(request):
 
 from django.http import JsonResponse
 import json
+
 
 @method_decorator(csrf_exempt, name="dispatch")
 def book(request):
@@ -70,6 +72,7 @@ def new_post(request):
         "dictionary/new_post.html",
         {'form': form})
 
+
 @method_decorator(csrf_exempt, name="dispatch")
 def single_post(request, pk):
     post = Post.objects.get(id=pk)
@@ -80,6 +83,7 @@ def single_post(request, pk):
         "dictionary/single_post.html",
         {'post': post, 'commentform': comment_form, 'comment_list': comment}
     )
+
 
 @method_decorator(csrf_exempt, name="dispatch")
 @login_required  # 함수위에 씌워주면 로그인시에만 확인 가능
@@ -104,13 +108,31 @@ def post_comment(request, pk):
         },
     )
 
+
 @method_decorator(csrf_exempt, name="dispatch")
-def qna(request):
+@login_required
+def donate(request):
+    if request.method == "POST":
+        filename = request.POST["lang_name"]
+        filetext = request.POST['lang_text']
+        user = request.user
+        uploadedFile = request.FILES["donate_video"]
+
+        document = models.SignDonate(
+            lang_name=filename,
+            lang_text=filetext,
+            user=user,
+            donate_video=uploadedFile
+        )
+        document.save()
+        redirect_url = "/dictionary/home"
+        return redirect(redirect_url)
+
     return render(
         request,
-        "dictionary/qna.html",
-        {}
-    )
+        "dictionary/donate.html",
+        {})
+
 
 @method_decorator(csrf_exempt, name="dispatch")
 def test(request):
