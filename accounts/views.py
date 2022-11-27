@@ -8,6 +8,8 @@ from accounts.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
+from dictionary.models import Post, SignDonate
+
 login = LoginView.as_view(
     template_name="accounts/login_form.html",
     next_page="/dictionary/home"
@@ -21,12 +23,14 @@ logout = LogoutView.as_view(next_page="/dictionary/home")
 def profile(request):
     user = request.user
     user_name = request.user.username
+    post_all = Post.objects.filter(user=request.user)
+    donate_all = SignDonate.objects.filter(user=request.user)
 
     return render(
         request,
         "accounts/profile.html",
         {
-            "user": user,
+            "user": user, 'post_all': post_all, 'donate_all': donate_all
         },
     )
 

@@ -49,5 +49,7 @@ class SignDonate(models.Model):
     lang_name = models.CharField(max_length=200)
     lang_text = models.TextField(max_length=200)
     donate_video = models.FileField(upload_to="media/video")
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.lang_name} : {self.user}"

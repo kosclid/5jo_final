@@ -3,12 +3,55 @@
 {% load static %}
 
 {% block content %}
-    <h2 style="color: white;">{{ user_name }}의 profile</h2>
+    <div align="center">
+        <h2 style="color: white;">{{ user.username }}의 profile</h2>
+        <br><br><br><br>
 
+        <h2 style="color: white;">{{ user.username }}의 수화 기부 내역</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">작성자</th>
+                <th scope="col">포스팅 제목</th>
+                <th scope="col">업로드 날짜</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in post_all %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ post.user }}</td>
+                    <td>{{ post.post_name }}</td>
+                    <td>{{ post.updated_at }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <body>
+        <br><br><br><br>
 
-
-    </body>
+        <h2 style="color: white;">{{ user.username }}의 포스팅</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">작성자</th>
+                <th scope="col">수화 영상 제목</th>
+                <th scope="col">업로드 날짜</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for donate in donate_all %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ donate.user }}</td>
+                    <td>{{ donate.lang_name }}</td>
+                    <td>{{ donate.created_at }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}
