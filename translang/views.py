@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
-from dictionary.models import Dictionganada
+from dictionary.models import Dictionganada, SignDonate
 
 
 @method_decorator(csrf_exempt, name="dispatch")
@@ -19,6 +19,49 @@ def movetotext(request):
         {'book': book_img}
     )
 
+
+import pandas as pd
+from django.conf import settings
+import os
+import django
+@method_decorator(csrf_exempt, name="dispatch")
+def recoding(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+
+        df = pd.DataFrame(columns=[
+            'uvrh01_x', 'uvrh01_y', 'uvrh01_z', 'uvrh12_x', 'uvrh12_y', 'uvrh12_z', 'uvrh23_x',
+            'uvrh23_y', 'uvrh23_z', 'uvrh34_x', 'uvrh34_y', 'uvrh34_z', 'uvrh05_x', 'uvrh05_y',
+            'uvrh05_z', 'uvrh56_x', 'uvrh56_y', 'uvrh56_z', 'uvrh67_x', 'uvrh67_y', 'uvrh67_z',
+            'uvrh78_x', 'uvrh78_y', 'uvrh78_z', 'uvrh59_x', 'uvrh59_y', 'uvrh59_z', 'uvrh910_x',
+            'uvrh910_y', 'uvrh910_z', 'uvrh1011_x', 'uvrh1011_y', 'uvrh1011_z', 'uvrh1112_x', 'uvrh1112_y',
+            'uvrh1112_z', 'uvrh913_x', 'uvrh913_y', 'uvrh913_z', 'uvrh1314_x', 'uvrh1314_y', 'uvrh1314_z',
+            'uvrh1415_x', 'uvrh1415_y', 'uvrh1415_z', 'uvrh1516_x', 'uvrh1516_y', 'uvrh1516_z', 'uvrh1317_x',
+            'uvrh1317_y', 'uvrh1317_z', 'uvrh017_x', 'uvrh017_y', 'uvrh017_z', 'uvrh1718_x', 'uvrh1718_y',
+            'uvrh1718_z', 'uvrh1819_x', 'uvrh1819_y', 'uvrh1819_z', 'uvrh1920_x', 'uvrh1920_y', 'uvrh1920_z',
+            'answer'])
+
+        name = data[0][63]
+        text = 'non'
+        for i in range(len(data)):
+            row = data[i][0:64]
+            df = df.append(pd.Series(row, index=df.columns), ignore_index=True)
+        df.to_csv('dictionary/assets/csv/{}.csv'.format(name), index=False)
+
+
+
+        # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sign_language_prj.settings")
+        # django.setup()
+        # uploadedFile = settings.BASE_DIR / "dictionary" / "assets" / '{}.csv'.format(name)
+
+        # SignDonate(user=request.user, lang_name=name, lang_text='non', donate_video=uploadedFile).save()
+
+    else:
+        data = 'non'
+    context = {
+        "result": data,
+    }
+    return JsonResponse(context)
 
 
 from django.http import JsonResponse
@@ -221,5 +264,3 @@ def home(request):
         "result": this_action,
     }
     return JsonResponse(context)
-
-

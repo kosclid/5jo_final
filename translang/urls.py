@@ -3,4 +3,5 @@ from translang import views
 
 urlpatterns = [
     path("", views.movetotext),
+    path("home/send/", views.recoding),
 ]
