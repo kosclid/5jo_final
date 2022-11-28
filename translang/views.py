@@ -3,14 +3,22 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
+from dictionary.models import Dictionganada
+
 
 @method_decorator(csrf_exempt, name="dispatch")
 def movetotext(request):
+    if request.method == "POST":
+        book_id = request.POST.get('img_id')
+        book_img = Dictionganada.objects.get(id=book_id)
+    else:
+        book_img = ''
     return render(
         request,
         "translang/movetotext.html",
-        {},
+        {'book': book_img}
     )
+
 
 
 from django.http import JsonResponse

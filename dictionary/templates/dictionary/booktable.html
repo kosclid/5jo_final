@@ -134,6 +134,14 @@
                                             <td>
                                                 수화 이름{{ book.lang_name }}<br>
                                                 수화 뜻 {{ book.lang_text }}
+                                            <form class="d-flex" method="POST" action="/translang/">
+                                                <button class="btn btn-outline-success btn-lg btn-block" value="{{ book.id }}" name="img_id"
+                                                        type="submit">
+                                                    해보기
+                                                </button>
+                                            </form>
+
+
                                             </td>
                                             <td>
                                                 <img src="{{ book.lang_img.url }}" alt='Card image cap'

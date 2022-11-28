@@ -20,7 +20,13 @@
 <div align="center">
     <video class="input_video" style="display: none"></video>
     <canvas class="output_canvas" width="1000px" height="562px"></canvas>
-</div>
+
+    <img src="{{ book.lang_img.url }}" alt="poster" style="width: 210px; height: auto"
+    onerror="this.src='/static/img/hand.jpg';">
+<a>{{ book.lang_name }}</a>
+
+    </div>
+
 
 <div id='result' style="text-align: center;"></div>
 <div id='resultadd' style="text-align: center"></div>
