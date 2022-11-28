@@ -24,6 +24,8 @@ import pandas as pd
 from django.conf import settings
 import os
 import django
+from django.core.files import File
+
 @method_decorator(csrf_exempt, name="dispatch")
 def recoding(request):
     if request.method == "POST":
@@ -42,19 +44,30 @@ def recoding(request):
             'answer'])
 
         name = data[0][63]
-        text = 'non'
+        print(data[0])
         for i in range(len(data)):
             row = data[i][0:64]
             df = df.append(pd.Series(row, index=df.columns), ignore_index=True)
-        df.to_csv('dictionary/assets/csv/{}.csv'.format(name), index=False)
+
+        csv_path = (
+                settings.BASE_DIR
+                / "dictionary"
+                / "assets"
+                / "csv"
+                / "{}.csv".format(name)
+        )
+
+        df.to_csv(csv_path, index=False)
 
 
-
-        # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sign_language_prj.settings")
-        # django.setup()
-        # uploadedFile = settings.BASE_DIR / "dictionary" / "assets" / '{}.csv'.format(name)
-
-        # SignDonate(user=request.user, lang_name=name, lang_text='non', donate_video=uploadedFile).save()
+        with csv_path.open('rb') as f:
+            file = File(f)
+            sign = SignDonate()
+            sign.user = request.user
+            sign.lang_name = name
+            sign.lang_text = 'non'
+            sign.donate_video.save(csv_path.name, file, save=False)
+            sign.save()
 
     else:
         data = 'non'
