@@ -116,13 +116,13 @@ def donate(request):
         filename = request.POST["lang_name"]
         filetext = request.POST['lang_text']
         user = request.user
-        uploadedFile = request.FILES["donate_video"]
+        uploadedFile = request.FILES["donate_file"]
 
         document = models.SignDonate(
             lang_name=filename,
             lang_text=filetext,
             user=user,
-            donate_video=uploadedFile
+            donate_file=uploadedFile
         )
         document.save()
         redirect_url = "/dictionary/home"

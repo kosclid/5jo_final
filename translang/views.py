@@ -66,7 +66,7 @@ def recoding(request):
             sign.user = request.user
             sign.lang_name = name
             sign.lang_text = 'non'
-            sign.donate_video.save(csv_path.name, file, save=False)
+            sign.donate_file.save(csv_path.name, file, save=False)
             sign.save()
 
     else:

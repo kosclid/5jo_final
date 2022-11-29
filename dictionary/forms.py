@@ -18,4 +18,4 @@ class CommentForm(forms.ModelForm):
 class DonateForm(forms.ModelForm):
     class Meta:
         model = SignDonate
-        fields = ["lang_name", 'lang_text', 'donate_video']
+        fields = ["lang_name", 'lang_text', 'donate_file']
