@@ -12,6 +12,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
 
+    <style>
+        .my_hidden {
+            display: none;
+        }
+    </style>
+
 
     <div style="text-align: center;">
         <h1 id="ahha" style="color:black;">ahha</h1>
@@ -24,16 +30,31 @@
         <img src="{{ book.lang_img.url }}" alt="poster" style="width: 210px; height: auto"
              onerror="this.src='/static/img/hand.jpg';">
         <a>{{ book.lang_name }}</a>
-        <button id="btn1">녹화</button>
-        <button id="btn2">전송</button>
-        <input type="text" name="inputValue" id="inputValue">
+
+
+        <br>
+
+
+        <div id='result' style="text-align: center;"></div>
+        <div id='resultadd' style="text-align: center"></div>
+
+        <button class="btn btn-secondary btn-lg btn-block" onclick="
+                const description_id = 'movie_description_comment';
+                console.log('toggle ' + description_id);
+                document.querySelector('#' + description_id).classList.toggle('my_hidden');">수화 데이터 녹화
+        </button>
+        <br><br>
+        <div id="movie_description_comment" class="my_hidden">
+
+            <button id="btn1">녹화</button>
+            <button id="btn2">전송</button>
+
+            <input type="text" name="inputValue" id="inputValue" placeholder="수화 제목">
+        </div>
 
 
     </div>
 
-
-    <div id='result' style="text-align: center;"></div>
-    <div id='resultadd' style="text-align: center"></div>
 
 
     <script type="module">
@@ -172,6 +193,7 @@
 
 
                     document.getElementById("btn1").addEventListener('click', recoding);
+
                     function recoding() {
                         var inputValue = document.getElementById('inputValue').value;
                         var dwith = d
