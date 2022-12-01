@@ -70,6 +70,7 @@
         var recod = [];
         var actionshow = [];
         var actshow = '';
+        var btonoff = 'off';
         {#var inputValue = '';#}
 
 
@@ -192,9 +193,19 @@
                         uvrh1718[0], uvrh1718[1], uvrh1718[2], uvrh1819[0], uvrh1819[1], uvrh1819[2], uvrh1920[0], uvrh1920[1], uvrh1920[2]]
 
 
+                    /*
                     document.getElementById("btn1").addEventListener('click', recoding);
 
                     function recoding() {
+                        console.log('clicked recoding')
+                        var inputValue = document.getElementById('inputValue').value;
+                        var dwith = d
+                        dwith.push(inputValue)
+                        recod.push(dwith)
+                    }
+                     */
+
+                    if (btonoff === 'on') {
                         var inputValue = document.getElementById('inputValue').value;
                         var dwith = d
                         dwith.push(inputValue)
@@ -410,10 +421,17 @@
         camera.start();
 
 
+        document.getElementById("btn1").addEventListener('click', recoding);
         document.getElementById("btn2").addEventListener('click', send);
+
+        function recoding() {
+            alert('녹화 시작')
+            btonoff = 'on'
+        }
 
         function send() {
             alert('녹화 완료')
+            btonoff = 'off'
             $.ajax({
                 type: 'POST',
                 url: '/translang/home/send/',
@@ -427,7 +445,6 @@
             });
             recod = []
         }
-
 
     </script>
 
