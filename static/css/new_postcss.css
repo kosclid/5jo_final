@@ -1,0 +1,13 @@
+#postit {
+    color: white;
+    margin-top: 160px;
+    margin-left: 530px;
+    text-align: center;
+    position: fixed;
+}
+
+#commentit {
+    color: white;
+    position: fixed;
+    margin-left: 200px;
+}

@@ -11,5 +11,5 @@ urlpatterns = [
     path("society/<int:pk>/comment/", views.post_comment),
     path("donate/", views.donate),
     path("test/", views.test),
-
+    path("intro/", views.intro),
 ]

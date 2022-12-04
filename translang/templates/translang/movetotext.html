@@ -1,4 +1,8 @@
 {% extends 'dictionary/base.html' %}
+
+{% comment %} 이거되는지 확인 {% endcomment %}
+{% comment %} {% include "dictionary/filmbase.html" %}   {% endcomment %}
+
 {% load static %}
 
 {% block content %}
@@ -12,49 +16,91 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
 
-    <style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/movetotextcss.css' %}">
+
+    {% comment %} <style>
         .my_hidden {
             display: none;
         }
-    </style>
+    </style> {% endcomment %}
 
 
-    <div style="text-align: center;">
-        <h1 id="ahha" style="color:black;">ahha</h1>
-    </div>
+    {% comment %} <div style="text-align: center;">
+        <h1 id="ahha" style="color:White;"> 손을 카메라에 가져다 주세요.</h1>
+    </div> {% endcomment %}
 
-    <div align="center">
-        <video class="input_video" style="display: none"></video>
-        <canvas class="output_canvas" width="1000px" height="562px"></canvas>
-
-        <img src="{{ book.lang_img.url }}" alt="poster" style="width: 210px; height: auto"
-             onerror="this.src='/static/img/hand.jpg';">
-        <a>{{ book.lang_name }}</a>
+    <br>
+    <br>
+    <h1> 카메라에 손을 가져다 주세요.</h1>
+    <br>
 
 
-        <br>
+    <div class=" wtf" align="center">
 
-
-        <div id='result' style="text-align: center;"></div>
-        <div id='resultadd' style="text-align: center"></div>
-
-        <button class="btn btn-secondary btn-lg btn-block" onclick="
-                const description_id = 'movie_description_comment';
-                console.log('toggle ' + description_id);
-                document.querySelector('#' + description_id).classList.toggle('my_hidden');">수화 데이터 녹화
-        </button>
-        <br><br>
-        <div id="movie_description_comment" class="my_hidden">
-
-            <button id="btn1">녹화</button>
-            <button id="btn2">전송</button>
-
-            <input type="text" name="inputValue" id="inputValue" placeholder="수화 제목">
+        {% comment %} video {% endcomment %}
+        <div class="videostyle" id="border-box">
+            <video class="input_video" style="display: none;"></video>
+            {% comment %} style="display: none" {% endcomment %}
+            <canvas class="output_canvas" width="690px" height="400px"></canvas>
         </div>
 
 
+        <div id="recordd">
+            <br>
+            {% comment %} 이거 숨어있는 무슨 수화 표시 글인가 {% endcomment %}
+            <div id='result' style="text-align: center; color:yellow;"></div>
+            <div id='resultadd' style="text-align: center color:yellow;"></div>
+            
+            {% comment %} btn btn-secondary btn-lg btn-block {% endcomment %}
+            <button class="btn-record" onclick="
+                    const description_id = 'movie_description_comment';
+                    console.log('toggle ' + description_id);
+                    document.querySelector('#' + description_id).classList.toggle('my_hidden');">수화 데이터 녹화
+            </button>
+            <br><br>
+            <div id="movie_description_comment" class="my_hidden">
+                <input type="text" name="inputValue" id="inputValue" placeholder="수화 제목">
+                <button id="btn1">녹화</button>
+                <button id="btn2">전송</button>
+            </div>
+            {% comment %} <h3><img src='/static/img/hand.jpg'></h3> {% endcomment %}
+        </div>
+
+        {% comment %} poster? {% endcomment %}
+        {% comment %} <div class="posterplz">
+            <img src="{{ book.lang_img.url }}" alt="poster" style="width: 100px; height: auto"
+             onerror="this.src='/static/img/hand.jpg';">
+             <a>{{ book.lang_name }}</a>
+        </div> {% endcomment %}
+
+
+       
+
+        <br>
+        <br>
+        <br>
+
     </div>
 
+    <div id="common">
+        <h4> 아래 동작 따라해보세요. </h4>
+        <img src='/static/img/hand.jpg'>
+        {% comment %} <img src="{{ book.lang_img.url }}" alt="poster" style="width: 100px; height: auto"
+             onerror="this.src='/static/img/hand.jpg';">
+        <a>{{ book.lang_name }}</a> {% endcomment %}
+
+        {% comment %} search menu 가보자 {% endcomment %}
+    </div>
+    <div id="nextbutton">
+        <a href="#" class="previous round">&#8249;</a>
+        <a href="#" class="next round">&#8250;</a>
+    </div>
+    <div id="search">
+        <div class="search-box">
+            <button class="btn-search"><i class="bx bx-search"></i></button>
+            <input type="text" class="input-search" placeholder="검색하세요...">
+        </div>
+    </div>
 
 
     <script type="module">
@@ -392,7 +438,7 @@
             // 로딩 이미지 주소 및 옵션
             let loadingImg = '';
             loadingImg += "<div id='loadingImg' style='position:absolute; top: calc(50% - (200px / 2)); width:100%; z-index:99999999;'>";
-            loadingImg += " <img src='/static/img/loading.gif' style='position: relative; display: block; margin: 0px auto;'/>";
+            loadingImg += " <img src='/static/img/loading.gif' style='position: relative; display: block; margin: 2px auto; margin-left: 649px; margin-top: 69px; height: 40px; weight: 40px;'/>";
             loadingImg += "</div>";
             //레이어 추가
             $('body')

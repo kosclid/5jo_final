@@ -1,0 +1,102 @@
+{% extends 'dictionary/base.html' %}
+{% load static %}
+{% block content %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/introcss.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap"
+          rel="stylesheet">
+    {% comment %}
+
+<section class="team">
+    <div class="teamintro">
+        <h1>팀원 소개</h1>
+    </div>
+</section> {% endcomment %}
+
+<head>
+	<meta charset="UTF-8">
+	{% comment %} <title>team section</title> {% endcomment %}
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	{% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+</head>
+
+<body>
+<div class="project">
+    <h6><strong>프로젝트 소개</strong></h6>
+    <h4><strong>수화-텍스트 번역 서비스</strong></h4>
+    <h5>기존의 수화 번역 서비스를 검색해본 결과, 현재 일반인들도 쉽게 접할 수 있는 서비스 중에서는 텍스트를 수화로 번역해주는 시스템, 정적인 동작에 한해서만 번역 시스템을 갖춘 서비스는 있었으나 <strong>동적인 동작을 인식하여 번역해주는 서비스</strong>는 구축되어있지 않았기에 이 시스템을 기획하게 되었습니다. 
+        <br>
+        <br>
+        오로지 수화를 통해서만 소통이 가능한 사람들과 그렇지 않은 사람들 간의 의사소통의 어려움을 해소하여 서로 간의 거리감을 좁혀줄 뿐만 아니라 언어 장애를 가진 이들의 <strong>사회적 소외감을 줄이는 것</strong>이 이 프로젝트의 궁극적인 목표입니다. 또한 더 나아가 수화를 배우고자 하는 사람들에게 <strong>학습 도구로써의 이용가능성</strong>까지 기대할 수 있습니다.
+
+    </h5>
+</div>
+
+<div class="wrapper">
+    <h1><strong>팀 소개</strong></h1>
+    <div class="our_team">
+        <div class="team_member">
+          <div class="member_img">
+             <img src="{% static 'img/pm.png' %}" alt="our_team">
+            <div class="social_media">
+               <div class="facebook item"><i class="fab fa-facebook-f"></i></div>
+               <div class="twitter item"><i class="fab fa-twitter"></i></div>
+               <div class="instagram item"><i class="fab fa-instagram"></i></div>
+             </div>
+          </div>
+          <h3>박소영</h3>
+          <span>PM | Front-end</span>
+          <p>든든한 팀원들과<br>아무쪼록 키보드를 두드리면 <br>'가능하더라'</p>
+        </div>
+        <div class="team_member">
+           <div class="member_img">
+             <img src="{% static 'img/back.png' %}" alt="our_team">
+             <div class="social_media">
+               <div class="facebook item"><i class="fab fa-facebook-f"></i></div>
+               <div class="twitter item"><i class="fab fa-twitter"></i></div>
+               <div class="instagram item"><i class="fab fa-instagram"></i></div>
+             </div>
+          </div>
+          <h3>권오승</h3>
+          <span>모델 학습 | Back-end</span>
+          <p>물리 재밌다! 즐겁다! 신난다!<br> 근데 코딩도 재밌다 즐겁다 신난다!</p>
+      </div>
+        <div class="team_member">
+           <div class="member_img">
+             <img src="{% static 'img/jung.png' %}" alt="our_team">
+             <div class="social_media">
+               <div class="facebook item"><i class="fab fa-facebook-f"></i></div>
+               <div class="twitter item"><i class="fab fa-twitter"></i></div>
+               <div class="instagram item"><i class="fab fa-instagram"></i></div>
+             </div>
+          </div>
+          <h3>김정민</h3>
+          <span>모델 학습</span>
+          <p> 시키면 일단 합니다 ...</p>
+      </div>
+        <div class="team_member">
+           <div class="member_img">
+             <img src="{% static 'img/ch.png' %}" alt="our_team">
+             <div class="social_media">
+               <div class="facebook item"><i class="fab fa-facebook-f"></i></div>
+               <div class="twitter item"><i class="fab fa-twitter"></i></div>
+               <div class="instagram item"><i class="fab fa-instagram"></i></div>
+             </div>
+          </div>
+          <h3>정찬영</h3>
+          <span>데이터 크롤링</span>
+          <p>데이터 수집만 했습니다.<br> 팀원들이 프로젝트 다 했어요 ㅠㅠㅠ</p>
+      </div>  
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>	
+
+</body>
+
+
+{% endblock %}

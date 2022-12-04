@@ -141,3 +141,11 @@ def test(request):
         "dictionary/test.html",
         {}
     )
+
+@method_decorator(csrf_exempt, name="dispatch")
+def intro(request):
+    return render(
+        request,
+        "dictionary/intro.html",
+        {}
+    )

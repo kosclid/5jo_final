@@ -4,17 +4,25 @@
 
 {% block content %}
 
-    <div align="center">
+<link rel="stylesheet" type="text/css" href="{% static 'css/loginformcss.css' %}">
+
+<body>
+    <div id="sign">
         <div style="color: white;">
-            <h2 style="color: white;">login</h2>
+            <h2>로그인하세요</h2>
+            <br>
+            <br>
             <form action="" method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-
-                <div style="display: inline-block; margin: 0 5px;  float: right;">
+                <br>
+                <button type="submit" class="btn btn-primary">로그인</button>
+                {% comment %} <div style="display: inline-block; margin: 0 5px;  float: right;">
                     <button type="submit" class="btn btn-primary">로그인</button>
-                </div>
+                </div> {% endcomment %}
             </form>
         </div>
     </div>
+</body>
+
 {% endblock %}

@@ -9,10 +9,9 @@
 
 <section class="notice">
     <div class="container">
-        <h1>
-            <a href="">O'sign</a>
-            <p> @ 수화 - 텍스트 번역 </p>
-        </h1>
+        {% comment %} <h1>
+            <a href="/dictionary/intro">Show Me Your Word</a>
+        </h1> {% endcomment %}
         <div class="jb-box">
             <video muted autoplay loop>
                 <source src="{% static 'vid/soyoungpark.mov' %}" type="video/mp4">
@@ -20,17 +19,29 @@
             <style>
                 {#/* body { padding: 0px; margin: 0px; background-color: black; opacity: 0.5;} */#}
                 .jb-box {
-                    width: 89%;
+                    {% comment %} width: 89%;
                     height: auto;
                     overflow: hidden;
-                    margin: 0px auto;
+                    margin: 0px auto; {% endcomment %}
                     position: fixed;
                 }
 
                 video {
                     width: 100%;
+                    opacity: 0.6;
                 }
+                .jb-text { position: absolute; top: 50%; width: 100%; }
+                .jb-text p { margin-top: -50px; margin-right: 620px; text-align: right; font-size: 90px; color: pink; }
+
+                .jb-text-explain { position: absolute; top: 30%; width: 100% }
+                .jb-text-explain { margin-top: 200px; margin-left: 150px; text-align: left; font-size: 20px; color: #ffffff;}
             </style>
+            <div class="jb-text">
+                <p>Show Me Your<br> Word</p>
+            </div>
+            <div class="jb-text-explain">
+                <p>수화를 텍스트로 변환해주는 서비스입니다. </p>
+            </div>
         </div>
     </div>
 

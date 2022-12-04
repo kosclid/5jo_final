@@ -5,6 +5,16 @@
     text-align: center;
     margin-top: 20em;
 } */
+#gogo {
+    text-align: center;
+}
+
+body{
+    color: white;
+    background-color: darkcyan;
+    /* text-align: center; */
+
+}
 .booktable{
     text-align: center;
     margin-bottom: 20px;
@@ -13,7 +23,7 @@
 }
 body{
     margin-top: 10px;
-    margin-left: 150px;
+    margin-left: 280px;
 }
 body>div{
     min-height: 100vh;
@@ -105,3 +115,4 @@ table>tbody>tr:hover{
 table>tbody>tr:nth-child(even) {
     background-color: rgb(238, 238, 238);
 } */
+

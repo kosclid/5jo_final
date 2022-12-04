@@ -4,7 +4,9 @@
 {% bootstrap_css %}
 
 {% block content %}
-<div align="center">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/new_postcss.css' %}">
+<div id="commentit" align="center">
 
     <div style="color: white;">
         <form action="" method="post">
@@ -14,7 +16,7 @@
 
                 {#        {{ form.as_table }}#}
             </table>
-            <div style="display: inline-block; margin: 0 5px;  float: right;">
+            <div style="display: inline-block; margin: 0 5px; float: right;">
                 <button type="submit" class="btn btn-success">제출</button>
             </div>
         </form>

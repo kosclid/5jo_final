@@ -27,9 +27,44 @@
 {#        <h1> * 수화 상담하러 가기</h1>#}
 {% block content %}
 
-    <div align="center">
 
-        <div style="color: white;">
+<link rel="stylesheet" type="text/css" href="{% static 'css/donatecss.css' %}">
+    <div class="well" align="center">
+        <h1> 기부된 수화는 오로지 더 나은 서비스를 제공해드리기 위해 사용됩니다. </h1>
+        <br>
+        <br>
+        <h2><strong><u>다음과 같은 수화를 알려주세요 </u></strong>
+
+        <div class="grid-container">
+            <div class="box">
+                <div class="item">
+                    <div class="checkbox-rect">
+                      <input type="checkbox" id="checkbox-rect1" name="check">
+                      <label for="checkbox-rect1"> 영어 수화</label>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="checkbox-rect">
+                      <input type="checkbox" id="checkbox-rect1" name="check">
+                      <label for="checkbox-rect1"> 비속어 수화</label>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="checkbox-rect">
+                      <input type="checkbox" id="checkbox-rect1" name="check">
+                      <label for="checkbox-rect1"> 유행어 수화</label>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="checkbox-rect">
+                      <input type="checkbox" id="checkbox-rect1" name="check">
+                      <label for="checkbox-rect1"> 기타</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="donatebox" style="color: white;">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <table style="color:white;">
@@ -37,7 +72,10 @@
                     <form action="/dictionary/donate" method="POST" enctype="multipart/form-data">
                         <input type="text" name="lang_name" placeholder="기부할 수화 이름">
                         <br>
+                        <br>
                         <input type="text" name="lang_text" placeholder="기부할 수화 설명">
+                        <br>
+                        <br>
                         <br>
                         <input type="file" name="donate_file">
 
@@ -47,9 +85,11 @@
 
                     {#        {{ form.as_table }}#}
                 </table>
-                <div style="display: inline-block; margin: 0 5px;  float: right;">
+                <br>
+                {% comment %} <div style="display: inline-block; margin: 0 5px;  float: right;"> {% endcomment %}
+                {% comment %} <div>
                     <button type="submit" class="btn btn-success">제출</button>
-                </div>
+                </div> {% endcomment %}
             </form>
         </div>
     </div>

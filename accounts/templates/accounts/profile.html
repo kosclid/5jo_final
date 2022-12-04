@@ -3,11 +3,14 @@
 {% load static %}
 
 {% block content %}
-    <div align="center">
-        <h2 style="color: white;">{{ user.username }}의 profile</h2>
-        <br><br><br><br>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/profilecss.css' %}">
+    <div id="bbody" align="center" >
+        <h4 style="color: white;">{{ user.username }}의 프로필</h4>
+        <br><br><br>
 
         <h2 style="color: white;">{{ user.username }}의 수화 기부 내역</h2>
+        <br>
         <table class="table">
             <thead>
             <tr>
@@ -32,6 +35,7 @@
         <br><br><br><br>
 
         <h2 style="color: white;">{{ user.username }}의 포스팅</h2>
+        <br>
         <table class="table">
             <thead>
             <tr>

@@ -3,189 +3,194 @@
 {% load static %}
 
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/societycss.css' %}">
-    <body id="page-top" style="background-color: lightskyblue">
+<body>
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/societycss.css' %}"> {% endcomment %}
+        {% comment %} <body id="page-top" style="background-color: lightskyblue"> {% endcomment %}
 
 
-    <section class="notice">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/booktablecss.css' %}">
+        <section class="notice">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/booktablecss.css' %}">
 
 
-        {#<div class="table_responsive">#}
-        {#<p class="booktable"> 수화 도감 </p>#}
-        {#    <table>#}
-        {#        <thead>#}
-        {#        <tr>#}
-        {#            <th> 의미</th>#}
-        {#            <th> 이미지</th>#}
-        {#        </tr>#}
-        {#        </thead>#}
-        {#        <tbody>#}
-        {#        <tr>#}
-        {#            <td> 뜻 <br>#}
-        {#                의미 <br>#}
-        {#            </td>#}
-        {#            <td><img src="img/book.jpeg"></td>#}
-        {#        </tr>#}
-        {#        </tbody>#}
-        {#    </table>#}
-        {#</div>#}
+            {#<div class="table_responsive">#}
+            {#<p class="booktable"> 수화 도감 </p>#}
+            {#    <table>#}
+            {#        <thead>#}
+            {#        <tr>#}
+            {#            <th> 의미</th>#}
+            {#            <th> 이미지</th>#}
+            {#        </tr>#}
+            {#        </thead>#}
+            {#        <tbody>#}
+            {#        <tr>#}
+            {#            <td> 뜻 <br>#}
+            {#                의미 <br>#}
+            {#            </td>#}
+            {#            <td><img src="img/book.jpeg"></td>#}
+            {#        </tr>#}
+            {#        </tbody>#}
+            {#    </table>#}
+            {#</div>#}
 
-        <link
-                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-                rel="stylesheet">
+            <link
+                    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                    rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+            <!-- Custom styles for this template ㅇㅣ거 어디서 가져오신거야....? -->
+            {% comment %} <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet"> {% endcomment %}
 
-        <!-- Custom styles for this page -->
-        <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
-
-
-        {#    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen"/>#}
-        {#        <link rel="stylesheet" href="{% static 'css/nav.css' %}"/>#}
-
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <form class="d-flex" method="POST" action="">
-
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="option1" value="기역" checked> ㄱ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" value="니은"> ㄴ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option3" value="디귿"> ㄷ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" value="리을"> ㄹ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option3" value="미음"> ㅁ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" value="비읍"> ㅂ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option3" value="시옷"> ㅅ
-                </label>
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="option1" value="이응"> ㅇ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" value="지읒"> ㅈ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option3" value="치읓"> ㅊ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" value="키읔"> ㅋ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option3" value="티읕"> ㅌ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" value="피읖"> ㅍ
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option3" value="히읗"> ㅎ
-                </label>
-
-                <button class="btn btn-outline-success btn-lg btn-block" type="submit">
-                    조회
-                </button>
-
-            </form>
-        </div>
+            <!-- Custom styles for this page -->
+            <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 
 
-        <p class="booktable"> 수화 도감 </p>
-        <div id="wrapper">
-            <div id="content-wrapper" class="d-flex flex-column">
-                <div id="content">
-                    <br>
-                    <div class="container-fluid">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                {#                                <h6 class="m-0 font-weight-bold text-primary">님께서 평가하신 정보입니다.</h6>#}
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="900px" cellspacing="0">
-                                        <colgroup>
-                                            <col style="width: 50%">
-                                            <col style="width: 25%">
-                                        </colgroup>
-                                        <thead>
-                                        <tr>
-                                            <th>
-                                                <center>수화 뜻</center>
-                                            </th>
-                                            <th>
-                                                <center>사진</center>
-                                            </th>
+            {#    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" media="screen"/>#}
+            {#        <link rel="stylesheet" href="{% static 'css/nav.css' %}"/>#}
+            
+            <p class="booktable"> 수화 도감 </p>
+            <div id="gogo" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <form class="d-flex" method="POST" action="">
 
-                                        </tr>
-                                        </thead>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options" id="option1" value="기역" checked> ㄱ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" value="니은"> ㄴ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" value="디귿"> ㄷ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" value="리을"> ㄹ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" value="미음"> ㅁ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" value="비읍"> ㅂ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" value="시옷"> ㅅ
+                    </label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options" id="option1" value="이응"> ㅇ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" value="지읒"> ㅈ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" value="치읓"> ㅊ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" value="키읔"> ㅋ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" value="티읕"> ㅌ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" value="피읖"> ㅍ
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" value="히읗"> ㅎ
+                    </label>
 
-                                        <tbody>
-                                        {% for book in book_all %}
+                    <button class="btn btn-outline-success btn-lg btn-block" type="submit">
+                        조회
+                    </button>
+
+                </form>
+            </div>
+
+
+            
+            <div id="wrapper">
+                <div id="content-wrapper" class="d-flex flex-column">
+                    <div id="content">
+                        <br>
+                        <div class="container-fluid">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    {#                                <h6 class="m-0 font-weight-bold text-primary">님께서 평가하신 정보입니다.</h6>#}
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="900px" cellspacing="0">
+                                            <colgroup>
+                                                <col style="width: 50%">
+                                                <col style="width: 25%">
+                                            </colgroup>
+                                            <thead>
                                             <tr>
-                                            <td>
-                                                수화 이름{{ book.lang_name }}<br>
-                                                수화 뜻 {{ book.lang_text }}
-                                            <form class="d-flex" method="POST" action="/translang/">
-                                                <button class="btn btn-outline-success btn-lg btn-block" value="{{ book.id }}" name="img_id"
-                                                        type="submit">
-                                                    해보기
-                                                </button>
-                                            </form>
+                                                <th>
+                                                    <center>수화 뜻</center>
+                                                </th>
+                                                <th>
+                                                    <center>이미지</center>
+                                                </th>
+
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            {% for book in book_all %}
+                                                <tr>
+                                                <td>
+                                                    수화 이름{{ book.lang_name }}<br>
+                                                    수화 뜻 {{ book.lang_text }} <br>
+                                                    <br>
+                                                    <br>
+                                                <form class="d-flex" method="POST" action="/translang/">
+                                                    <button class="btn btn-outline-success btn-lg btn-block" value="{{ book.id }}" name="img_id"
+                                                            type="submit"
+                                                            style="display:block; width:100%; text-align:center; font-size:1em; padding:7px;">
+                                                        해보기
+                                                    </button>
+                                                </form>
 
 
-                                            </td>
-                                            <td>
-                                                <img src="{{ book.lang_img.url }}" alt='Card image cap'
-                                                     style="width: 200px; height: auto;">
-                                            </td>
-                                        {% endfor %}
+                                                </td>
+                                                <td>
+                                                    <img src="{{ book.lang_img.url }}" alt='Card image cap'
+                                                        style="width: 200px; height: auto;">
+                                                </td>
+                                            {% endfor %}
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-    </section>
-
-
-
-    {% bootstrap_javascript %}
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+        </section>
 
 
 
-{% endblock %}
+        {% bootstrap_javascript %}
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+        <!-- Page level plugins -->
+        <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+
+
+    {% endblock %}
 
 </body>

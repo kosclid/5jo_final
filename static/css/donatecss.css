@@ -1,0 +1,93 @@
+.well {
+    margin-top: 80px;
+    position: fixed;
+    margin-left: 470px;
+    margin-top: 160px;
+    color: white;
+}
+
+h1 {
+    font-size: 22px;
+}
+h2{
+    font-size: 12px;
+    text-align: center;
+}
+
+#donatebox{
+    margin-left: 120px;
+    margin-top: -31px;
+    
+    position: fixed;
+}
+
+/* checkbox statrs  */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    /* minmax(300px, 1fr)*/
+    grid-gap: 30px;
+    padding: 20px;
+    justify-items: center;
+    justify-content: center;
+    align-items: start;
+  }
+  .box {
+    padding: 2em;
+  }
+  .item {
+    margin-bottom: 2em;
+  }
+  
+  /* checkbox-rect */
+  .checkbox-rect input[type="checkbox"] {
+    display: none;
+  }
+  .checkbox-rect input[type="checkbox"] + label {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    font: 10px/16px "Open Sans", Arial, sans-serif;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  .checkbox-rect input[type="checkbox"]:hover + label:hover {
+    color: rgb(23, 86, 228);
+  }
+  .checkbox-rect input[type="checkbox"]:hover + label:before {
+    background: #50565a;
+    box-shadow: inset 0px 0px 0px 2px #f7f2f2;
+  }
+  .checkbox-rect input[type="checkbox"] + label:last-child {
+    margin-bottom: 0;
+  }
+  .checkbox-rect input[type="checkbox"] + label:before {
+    content: "";
+    display: block;
+    width: 1.4em;
+    height: 1.4em;
+    border: 1px solid #343a3f;
+    border-radius: 0.2em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transition: all 0.2s, background 0.2s ease-in-out;
+    transition: all 0.2s, background 0.2s ease-in-out;
+    background: #f3f3f3;
+  }
+  .checkbox-rect input[type="checkbox"]:checked + label:before {
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 0.2em;
+    border: 2px solid #fff;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    background: #50565a;
+    box-shadow: 0 0 0 1px #000;
+  }
+    /* checkbox-rect end */
+  

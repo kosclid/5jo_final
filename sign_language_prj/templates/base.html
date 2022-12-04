@@ -1,13 +1,15 @@
 {% load static %}
 
+
+{% comment %} <p>O'SIGN &copy; 2022</p> {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> O'article </title>
+    <title> O'22 5조 </title>
     <head class="do">
 
         <title> sidebar menu </title>
-        <link rel="stylesheet" href="{% static 'css/sidemenucss.css' %}">
+        <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel='stylesheet'>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap"
@@ -20,13 +22,13 @@
     <header>
         <div class="image-text">
                     <span class="image">
-                        <img src="{% static 'img/logo.jpg' %}" alt="logo">
+                        <img src="{% static 'img/weare.png' %}" alt="logo">
                     </span>
             <div class="text header-text">
                 <br>
                 <br>
                 <span class="name">O'SIGN</span><br>
-                <span class="profession">박소영  권오승<br>  김정민 정찬영 </span>
+                <span class="profession"><a href="/dictionary/intro">프로젝트 소개 클릭</a></span>
             </div>
         </div>
 
@@ -43,7 +45,7 @@
                 <li class="nav-link">
                     <a href="/translang">
                         <i class='bx bx-mobile-landscape icon'></i>
-                        <span class="text nav-text"> 수화 번역</span>
+                        <span class="text nav-text"> 수화 번역 체험</span>
                     </a>
                 </li>
                 <li class="nav-link">
@@ -54,7 +56,7 @@
                 </li>
                 <li class="nav-link">
                     <a href="/dictionary/donate">
-                        <i class='bx bxl-quora icon'></i>
+                        <i class='bx bx-donate-heart icon'></i>
                         <span class="text nav-text"> 수화기부</span>
                     </a>
                 </li>
@@ -73,6 +75,7 @@
             </ul>
         </div>
     </div>
+
     <footer>
         <div class="containerlogin">
             {% if not user.is_authenticated %}
@@ -91,7 +94,11 @@
             {% endif %}
 
         </div>
+        
+
     </footer>
+    {% comment %} footer 해보자 {% endcomment %}
+
 </nav>
 
 
