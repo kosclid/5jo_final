@@ -141,7 +141,7 @@
                         ' thank',
                         ' go',
                         ' do',
-                        ' joy',
+                        ' 즐겁다',
                         ' gjoy',
                         ' sua',
                         ' tired',
@@ -358,15 +358,15 @@
                             }
                             actionshow.push(act)
                             document.querySelector("#result").innerHTML = `
-                     <h2>동작</h2>
+                     <h2>인식된 수화</h2>
                      ${act}
                      `
                         });
                     }
 
-                    if (actionshow.length > 30) {
+                    if (actionshow.length > 20) {
 
-                        var la = actionshow.slice(-30,)
+                        var la = actionshow.slice(-20,)
                         console.log('actionall', la)
 
                         const set = new Set(la);
@@ -376,12 +376,12 @@
                             if (la.slice(-1)[0] != '???') {
                                 actshow = actshow + la.slice(-1)[0]
                                 console.log('num', actshow)
-                                actionshow.splice(-30,);
+                                actionshow.splice(-20,);
                             }
                         }
 
                         document.querySelector("#resultadd").innerHTML = `
-                     <h2>동작</h2>
+                     <h2>텍스트창</h2>
                      ${actshow}
                      `
                     }

@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'css/single_pagecss.css' %}">
+
     <style>
         .my_hidden {
             display: none;
@@ -11,15 +13,16 @@
     </style>
 
 
-    <div align="center">
-        <h1>포스팅 제목{{ post.post_name }}</h1><br>
-        <a>포스팅 작성자{{ post.user }}</a><br>
-        <a>포스팅 업데이트 날짜{{ post.updated_at }}</a>
+    <div class="center" align="center">
+        <div class="bluen">
+        <h1>제목{{ post.post_name }}</h1><br>
+        <a>작성자{{ post.user }}</a><br>
+        <a>업데이트 날짜{{ post.updated_at }}</a>
 
         <br>
         <br>
         <br>
-        <a>포스팅 내용{{ post.post_text }}</a>
+        <a>{{ post.post_text }}</a>
 
 
         <br>
@@ -28,13 +31,14 @@
         <br>
 
 
-        {% for comment in comment_list %}
+            {% for comment in comment_list %}
             댓글 작성자 {{ comment.user }} 날짜{{ comment.updated_at }}<br>
             댓글 내용{{ comment.comment }}
             <br>
             <br>
 
-        {% endfor %}
+            {% endfor %}
+        </div>
 
 
 
@@ -54,9 +58,10 @@
                             <form action="/dictionary/society/{{ post.id }}/comment/" method="post" novalidate>
                                 {% csrf_token %}
 
+                                <div style="color:black;">
                                 <table>
                                     {% bootstrap_form commentform %}
-                                </table>
+                                </table></div>
                                 <input type="submit" value="댓글 저장"/>
                             </form>
                         </div>
