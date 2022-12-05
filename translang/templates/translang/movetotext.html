@@ -84,7 +84,10 @@
 
     <div id="common">
         <h4> 아래 동작 따라해보세요. </h4>
-        <img src='/static/img/hand.jpg'>
+        <img src="{{ book.lang_img.url }}" alt="poster" style="width: 100px; height: auto"
+        onerror="this.src='/static/img/hand.jpg';">
+
+        {% comment %} <img src='/static/img/hand.jpg'> {% endcomment %}
         {% comment %} <img src="{{ book.lang_img.url }}" alt="poster" style="width: 100px; height: auto"
              onerror="this.src='/static/img/hand.jpg';">
         <a>{{ book.lang_name }}</a> {% endcomment %}

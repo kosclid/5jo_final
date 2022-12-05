@@ -18,6 +18,7 @@
                 <th scope="col">작성자</th>
                 <th scope="col">수화 영상 제목</th>
                 <th scope="col">업로드 날짜</th>
+                <th scope="col">업로드 파일</th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +28,7 @@
                     <td>{{ donate.user }}</td>
                     <td>{{ donate.lang_name }}</td>
                     <td>{{ donate.created_at }}</td>
+                    <td><a href='{{ donate.donate_file.url }}'>파일 확인</a></td>
                 </tr>
             {% endfor %}
             </tbody>
